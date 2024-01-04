@@ -20,7 +20,7 @@ flutter:
   uses-material-design: true
   assets:
      - assets/swiiftlogo.png
-     - assets/onboarding.json
+     - assets/delivery.json
      
   # fonts:
   #   - family: Schyler
