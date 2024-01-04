@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  lottie: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -19,7 +20,8 @@ flutter:
   uses-material-design: true
   assets:
      - assets/swiiftlogo.png
-  #  - images/a_dot_ham.jpeg
+     - assets/onboarding.json
+     
   # fonts:
   #   - family: Schyler
   #     fonts:
