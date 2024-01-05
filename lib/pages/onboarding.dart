@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -12,6 +11,7 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -20,8 +20,8 @@ class _OnboardingState extends State<Onboarding> {
             child: Text(
                 'Connecting Relaible Delivery Partners To Your Doorsteps, Anytime, Anywhere'),
           ),
-          Lottie.asset(
-            'assets/delivery.json',
+          Image.asset(
+            'assets/onboardingimg.jpeg',
           ),
           Padding(
             padding: const EdgeInsets.only(right: 20, left: 20),
@@ -29,7 +29,7 @@ class _OnboardingState extends State<Onboarding> {
               onPressed: () {},
               child: Text('Get Started'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue, // Background color
+                primary: Color(0xFF50E3C2), // Background color
                 onPrimary: Colors.white, // Text color
                 padding: EdgeInsets.symmetric(
                     vertical: 16.0, horizontal: 70), // Vertical padding
@@ -40,9 +40,9 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 50.0,
           ),
-          Text('Already have an account? Signup')
+          Text('Already have an account? Signup'),
         ],
       ),
     );

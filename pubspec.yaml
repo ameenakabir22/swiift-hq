@@ -21,6 +21,8 @@ flutter:
   assets:
      - assets/swiiftlogo.png
      - assets/delivery.json
+     - assets/onboardingimg.jpeg
+
      
   # fonts:
   #   - family: Schyler
