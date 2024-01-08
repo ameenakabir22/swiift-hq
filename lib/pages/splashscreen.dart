@@ -13,26 +13,31 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // delay fpr 3 secs, then navigate to signup screen
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Onboarding()),
-      );
-    });
+    // Call _loadData to initiate the delayed loading and navigation
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    // Simulate loading data
+    await Future.delayed(Duration(seconds: 3));
+
+    // Navigate to the next screen (e.g., Onboarding)
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Onboarding()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.only(bottom: 80.0),
-      child: Center(
-          child: Image.asset(
-        'assets/swiiftlogo.png',
-        height: 200,
-        width: 200,
-      )),
-    ));
+      body: Center(
+        child: Image.asset(
+          'assets/swiiftlogo.png',
+          height: 200,
+          width: 200,
+        ),
+      ),
+    );
   }
 }

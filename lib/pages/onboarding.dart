@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swiift/pages/onboarding2.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -33,14 +34,20 @@ class _OnboardingState extends State<Onboarding> {
             child: Padding(
               padding: const EdgeInsets.only(right: 20, left: 20),
               child: TextButton(
-                onPressed: () {},
-                child: Text('Get Started'),
+                onPressed: () {
+                  // Navigate to the second page when the button is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Onboarding2()),
+                  );
+                },
+                child: Text('Next'),
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xFF50E3C2), // Background color
                   onPrimary: Colors.white, // Text color
                   padding: EdgeInsets.symmetric(
-                    vertical: 16.0,
-                    horizontal: 70,
+                    vertical: 23.0,
+                    horizontal: 120,
                   ), // Vertical padding
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0), // Border radius
@@ -50,8 +57,23 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
           Transform.translate(
-              offset: Offset(0.0, -50.0),
-              child: Text('Already have an account? Signup'))
+            offset: Offset(0.0, -20.0),
+            child: RichText(
+              text: TextSpan(
+                text: 'Already have an account? ',
+                style: TextStyle(color: Colors.black),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Log In',
+                    style: TextStyle(
+                      color: Color(0xFF50E3C2), // Match the button color
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
