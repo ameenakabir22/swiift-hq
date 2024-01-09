@@ -9,18 +9,15 @@ class Onboarding2 extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              // Navigate back to the first page when the back arrow is pressed
-              Navigator.pop(context);
-            },
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
           ),
+          onPressed: () {
+            // Navigate back to the first page when the back arrow is pressed
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Center(
@@ -28,9 +25,12 @@ class Onboarding2 extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'The Safety Of Your Goods Is Our Priority',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(
+                  'The Safety Of Your Goods Is Our Priority',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                ),
               ),
 
               //animations
@@ -42,7 +42,21 @@ class Onboarding2 extends StatelessWidget {
               ),
 
               //text button
-              TextButton(onPressed: () {}, child: Text('Next'))
+              TextButton(
+                onPressed: () {},
+                child: Text('Next'),
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF50E3C2), // Background color
+                  onPrimary: Colors.white, // Text color
+                  padding: EdgeInsets.symmetric(
+                    vertical: 23.0,
+                    horizontal: 120,
+                  ), // Vertical padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0), // Border radius
+                  ),
+                ),
+              )
             ],
           ),
         ),
