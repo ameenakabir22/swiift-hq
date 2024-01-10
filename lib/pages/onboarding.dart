@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swiift/pages/login.dart';
 import 'package:swiift/pages/onboarding2.dart';
 
 class Onboarding extends StatefulWidget {
@@ -58,19 +59,30 @@ class _OnboardingState extends State<Onboarding> {
           ),
           Transform.translate(
             offset: Offset(0.0, -20.0),
-            child: RichText(
-              text: TextSpan(
-                text: 'Already have an account? ',
-                style: TextStyle(color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Log In',
-                    style: TextStyle(
-                      color: Color(0xFF50E3C2), // Match the button color
-                      fontWeight: FontWeight.bold,
+            child: GestureDetector(
+              onTap: () {
+                // Navigate to the login page when the "Log In" text is pressed
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          LogIn()), // Replace with your login page
+                );
+              },
+              child: RichText(
+                text: TextSpan(
+                  text: 'Already have an account? ',
+                  style: TextStyle(color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Log In',
+                      style: TextStyle(
+                        color: Color(0xFF50E3C2), // Match the button color
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

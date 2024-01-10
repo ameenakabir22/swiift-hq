@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:swiift/pages/onboarding3.dart';
 
 class Onboarding2 extends StatelessWidget {
   @override
@@ -15,50 +16,57 @@ class Onboarding2 extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            // Navigate back to the first page when the back arrow is pressed
+            // Navigate back to the previous page when the back arrow is pressed
             Navigator.pop(context);
           },
         ),
       ),
       body: Center(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Text(
-                  'The Safety Of Your Goods Is Our Priority',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 32.0),
+              child: Text(
+                'The Safety Of Your Goods Is Our Priority',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+              ),
+            ),
+
+            // Add some spacing between text and animation
+            SizedBox(height: 20),
+
+            // Lottie animation
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Lottie.asset(
+                'assets/delivery.json',
+              ),
+            ),
+
+            // Text button
+            TextButton(
+              onPressed: () {
+                // Add logic to handle the button press
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Onboarding3()),
+                );
+              },
+              child: Text('Next'),
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFF50E3C2), // Background color
+                onPrimary: Colors.white, // Text color
+                padding: EdgeInsets.symmetric(
+                  vertical: 23.0,
+                  horizontal: 120,
+                ), // Vertical padding
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0), // Border radius
                 ),
               ),
-
-              //animations
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Lottie.asset(
-                  'assets/delivery.json',
-                ),
-              ),
-
-              //text button
-              TextButton(
-                onPressed: () {},
-                child: Text('Next'),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF50E3C2), // Background color
-                  onPrimary: Colors.white, // Text color
-                  padding: EdgeInsets.symmetric(
-                    vertical: 23.0,
-                    horizontal: 120,
-                  ), // Vertical padding
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0), // Border radius
-                  ),
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
