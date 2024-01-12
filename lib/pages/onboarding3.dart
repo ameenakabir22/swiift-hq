@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:swiift/pages/signup.dart';
 
 class Onboarding3 extends StatefulWidget {
   const Onboarding3({Key? key}) : super(key: key);
@@ -26,6 +28,38 @@ class _Onboarding3State extends State<Onboarding3> {
           },
         ),
       ),
+      body: Column(children: [
+        Text(
+          'Do you Own A Motorcycle?',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+        ),
+        Lottie.asset('assets/money.json'),
+        Text(
+          'Sign Up And Start Earning',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+        ),
+        TextButton(
+          onPressed: () {
+            // Add logic to handle the button press
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SignUp()),
+            );
+          },
+          child: Text('Next'),
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xFF50E3C2), // Background color
+            onPrimary: Colors.white, // Text color
+            padding: EdgeInsets.symmetric(
+              vertical: 23.0,
+              horizontal: 120,
+            ), // Vertical padding
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0), // Border radius
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }
