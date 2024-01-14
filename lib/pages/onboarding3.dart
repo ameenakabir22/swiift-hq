@@ -30,19 +30,27 @@ class _Onboarding3State extends State<Onboarding3> {
       ),
       body: Center(
         child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 30.0),
+          Center(
             child: Text(
-              'Do you Own A Motorcycle?',
+              'Do you Own A',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
             ),
           ),
-          SizedBox(height: 10),
+          Text('Motorcycle?',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w800,
+              )),
+          SizedBox(height: 15),
           Lottie.asset('assets/money.json'),
+          Text(
+            'Sign Up And Start',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 30.0),
+            padding: const EdgeInsets.only(left: 17.0),
             child: Text(
-              'Sign Up And Start Earning',
+              'Earning Now',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
             ),
           ),
@@ -55,7 +63,7 @@ class _Onboarding3State extends State<Onboarding3> {
                 MaterialPageRoute(builder: (context) => SignUp()),
               );
             },
-            child: Text('Next'),
+            child: Text('Get Started'),
             style: ElevatedButton.styleFrom(
               primary: Color(0xFF50E3C2), // Background color
               onPrimary: Colors.white, // Text color
