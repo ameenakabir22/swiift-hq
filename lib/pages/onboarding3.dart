@@ -49,7 +49,7 @@ class _Onboarding3State extends State<Onboarding3> {
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 17.0),
+            padding: const EdgeInsets.only(left: 14.0),
             child: Text(
               'Earning Now',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
@@ -70,7 +70,7 @@ class _Onboarding3State extends State<Onboarding3> {
               onPrimary: Colors.white, // Text color
               padding: EdgeInsets.symmetric(
                 vertical: 23.0,
-                horizontal: 120,
+                horizontal: 150,
               ), // Vertical padding
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.0), // Border radius
@@ -81,4 +81,22 @@ class _Onboarding3State extends State<Onboarding3> {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => SignUp(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0); // Slide from right to left
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

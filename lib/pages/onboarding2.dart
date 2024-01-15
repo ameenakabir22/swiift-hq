@@ -54,10 +54,7 @@ class Onboarding2 extends StatelessWidget {
             TextButton(
               onPressed: () {
                 // Add logic to handle the button press
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Onboarding3()),
-                );
+                Navigator.of(context).push(_createRoute());
               },
               child: Text('Next'),
               style: ElevatedButton.styleFrom(
@@ -65,7 +62,7 @@ class Onboarding2 extends StatelessWidget {
                 onPrimary: Colors.white, // Text color
                 padding: EdgeInsets.symmetric(
                   vertical: 23.0,
-                  horizontal: 120,
+                  horizontal: 150,
                 ), // Vertical padding
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0), // Border radius
@@ -77,4 +74,22 @@ class Onboarding2 extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Onboarding3(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0); // Slide from right to left
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

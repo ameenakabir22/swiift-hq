@@ -22,10 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
 
     // Navigate to the next screen (e.g., Onboarding)
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Onboarding()),
-    );
+    Navigator.of(context).push(_createFadeRoute1());
   }
 
   @override
@@ -40,4 +37,19 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
+}
+
+Route _createFadeRoute1() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Onboarding(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var fadeTween = Tween<double>(begin: 0.0, end: 1.0);
+      var fadeAnimation = fadeTween.animate(animation);
+
+      return FadeTransition(
+        opacity: fadeAnimation,
+        child: child,
+      );
+    },
+  );
 }

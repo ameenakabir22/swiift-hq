@@ -12,6 +12,7 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
+    precacheImage(AssetImage('assets/onboardingimg.jpeg'), context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -40,10 +41,7 @@ class _OnboardingState extends State<Onboarding> {
               child: TextButton(
                 onPressed: () {
                   // Navigate to the second page when the button is pressed
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Onboarding2()),
-                  );
+                  Navigator.of(context).push(_createRoute());
                 },
                 child: Text('Next'),
                 style: ElevatedButton.styleFrom(
@@ -51,7 +49,7 @@ class _OnboardingState extends State<Onboarding> {
                   onPrimary: Colors.white, // Text color
                   padding: EdgeInsets.symmetric(
                     vertical: 23.0,
-                    horizontal: 120,
+                    horizontal: 150,
                   ), // Vertical padding
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0), // Border radius
@@ -65,12 +63,7 @@ class _OnboardingState extends State<Onboarding> {
             child: GestureDetector(
               onTap: () {
                 // Navigate to the login page when the "Log In" text is pressed
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          LogIn()), // Replace with your login page
-                );
+                Navigator.of(context).push(_createRoute2());
               },
               child: RichText(
                 text: TextSpan(
@@ -93,4 +86,40 @@ class _OnboardingState extends State<Onboarding> {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Onboarding2(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0); // Slide from right to left
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => LogIn(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0); // Start from bottom
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
