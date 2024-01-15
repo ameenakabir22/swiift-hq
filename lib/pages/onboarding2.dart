@@ -26,13 +26,19 @@ class Onboarding2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 32.0),
+              padding: const EdgeInsets.only(left: 25.0),
               child: Text(
-                'The Safety Of Your Goods Is Our Priority',
+                'The Safety Of Your',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
               ),
             ),
-
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                'Goods Is Our Priority',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+              ),
+            ),
             // Add some spacing between text and animation
             SizedBox(height: 20),
 

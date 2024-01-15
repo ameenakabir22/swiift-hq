@@ -19,9 +19,12 @@ class _OnboardingState extends State<Onboarding> {
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Text(
-              'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Text(
+                'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+              ),
             ),
           ),
           Transform.translate(
