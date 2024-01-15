@@ -43,6 +43,7 @@ class _Onboarding3State extends State<Onboarding3> {
               )),
           SizedBox(height: 15),
           Lottie.asset('assets/money.json'),
+          SizedBox(height: 20),
           Text(
             'Sign Up And Start',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
@@ -54,7 +55,7 @@ class _Onboarding3State extends State<Onboarding3> {
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           TextButton(
             onPressed: () {
               // Add logic to handle the button press
