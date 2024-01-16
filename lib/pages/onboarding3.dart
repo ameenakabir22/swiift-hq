@@ -20,7 +20,7 @@ class _Onboarding3State extends State<Onboarding3> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
-            color: Colors.black,
+            color: Colors.white,
           ),
           onPressed: () {
             // Navigate back to the previous page when the back arrow is pressed
