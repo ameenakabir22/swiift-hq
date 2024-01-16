@@ -20,7 +20,7 @@ class _Onboarding3State extends State<Onboarding3> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
-            color: Colors.white,
+            color: Colors.black,
           ),
           onPressed: () {
             // Navigate back to the previous page when the back arrow is pressed
@@ -70,7 +70,7 @@ class _Onboarding3State extends State<Onboarding3> {
               onPrimary: Colors.white, // Text color
               padding: EdgeInsets.symmetric(
                 vertical: 23.0,
-                horizontal: 150,
+                horizontal: 120,
               ), // Vertical padding
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.0), // Border radius
