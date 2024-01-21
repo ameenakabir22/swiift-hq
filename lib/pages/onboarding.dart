@@ -34,54 +34,6 @@ class _OnboardingState extends State<Onboarding> {
               'assets/onboardingimg.jpeg',
             ),
           ),
-          Transform.translate(
-            offset: Offset(0.0, -80.0),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20),
-              child: TextButton(
-                onPressed: () {
-                  // Navigate to the second page when the button is pressed
-                  Navigator.of(context).push(_createRoute());
-                },
-                child: Text('Next'),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF50E3C2), // Background color
-                  onPrimary: Colors.white, // Text color
-                  padding: EdgeInsets.symmetric(
-                    vertical: 23.0,
-                    horizontal: 150,
-                  ), // Vertical padding
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0), // Border radius
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Transform.translate(
-            offset: Offset(0.0, -20.0),
-            child: GestureDetector(
-              onTap: () {
-                // Navigate to the login page when the "Log In" text is pressed
-                Navigator.of(context).push(_createRoute2());
-              },
-              child: RichText(
-                text: TextSpan(
-                  text: 'Already have an account? ',
-                  style: TextStyle(color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Log In',
-                      style: TextStyle(
-                        color: Color(0xFF50E3C2), // Match the button color
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );

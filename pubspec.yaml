@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   lottie: ^2.3.1
+  smooth_page_indicator: ^1.0.0
 
 dev_dependencies:
   flutter_test:
