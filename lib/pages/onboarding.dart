@@ -12,7 +12,6 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage('assets/onboardingimg.jpeg'), context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
