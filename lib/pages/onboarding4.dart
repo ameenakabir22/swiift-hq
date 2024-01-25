@@ -3,7 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:swiift/pages/onboarding.dart';
 import 'package:swiift/pages/onboarding2.dart';
 import 'package:swiift/pages/onboarding3.dart';
-import 'package:swiift/pages/signup.dart';
+import 'package:swiift/pages/signup_options.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -55,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return SignUp();
+                            return SignUpOptions();
                           }));
                         },
                         child: Text('Done'))
