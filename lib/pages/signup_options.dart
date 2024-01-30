@@ -34,12 +34,13 @@ class SignUpOptions extends StatelessWidget {
             },
             child: Column(
               children: [
+                // the row containing the options
                 Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0, left: 18.0),
                       child: Text(
-                        'Sign Up To Deliver',
+                        'Sign Up To Shop',
                         style: TextStyle(
                             fontSize: 33, fontWeight: FontWeight.w700),
                       ),
@@ -55,6 +56,7 @@ class SignUpOptions extends StatelessWidget {
                     ),
                   ],
                 ),
+                // adds a faint border
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 16, vertical: 50),
                   decoration: BoxDecoration(
@@ -71,7 +73,8 @@ class SignUpOptions extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0, left: 18.0),
                       child: Text(
-                        'Sign Up For Seamless Deliveries',
+                        'Sign Up For Seamless shopping',
+                        overflow: TextOverflow.clip,
                         style: TextStyle(
                             fontSize: 33, fontWeight: FontWeight.w700),
                       ),
