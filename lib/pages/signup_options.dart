@@ -37,17 +37,19 @@ class SignUpOptions extends StatelessWidget {
                 // the row containing the options
                 Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, left: 18.0),
-                      child: Text(
-                        'Sign Up To Shop',
-                        style: TextStyle(
-                            fontSize: 33, fontWeight: FontWeight.w700),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 80.0, left: 20),
+                        child: Text(
+                          'Sign Up To Deliver',
+                          style: TextStyle(
+                              fontSize: 33, fontWeight: FontWeight.w700),
+                        ),
                       ),
                     ),
                     SizedBox(width: 10),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
+                      padding: const EdgeInsets.only(top: 30.0),
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,
@@ -70,18 +72,20 @@ class SignUpOptions extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, left: 18.0),
-                      child: Text(
-                        'Sign Up For Seamless shopping',
-                        overflow: TextOverflow.clip,
-                        style: TextStyle(
-                            fontSize: 33, fontWeight: FontWeight.w700),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30.0, top: 50),
+                        child: Text(
+                          'Sign Up For Swift Deliveries',
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(
+                              fontSize: 33, fontWeight: FontWeight.w700),
+                        ),
                       ),
                     ),
                     SizedBox(width: 10),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
+                      padding: const EdgeInsets.only(top: 20.0, right: 22),
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,
