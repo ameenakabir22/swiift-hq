@@ -35,28 +35,31 @@ class SignUpOptions extends StatelessWidget {
             child: Column(
               children: [
                 // the row containing the options
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 80.0, left: 20),
-                        child: Text(
-                          'Sign Up To Deliver',
-                          style: TextStyle(
-                              fontSize: 33, fontWeight: FontWeight.w700),
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20, top: 20),
+                          child: Text(
+                            'Sign Up To Deliver',
+                            style: TextStyle(
+                                fontSize: 33, fontWeight: FontWeight.w700),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.black,
-                        size: 40,
+                      SizedBox(width: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30.0, left: 15),
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.black,
+                          size: 40,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 // adds a faint border
                 Container(
@@ -85,7 +88,7 @@ class SignUpOptions extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20.0, right: 22),
+                      padding: const EdgeInsets.only(top: 20.0, right: 10),
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,
