@@ -12,34 +12,28 @@ class Onboarding3 extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Center(
-                child: Text(
-                  'Do you Own A',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-                ),
-              ),
-              Text(
-                'Motorcycle?',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              SizedBox(height: 15),
-              Lottie.asset('assets/money.json'),
-              SizedBox(height: 20),
-              Text(
-                'Sign Up And Start',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+              Padding(
+                padding: const EdgeInsets.only(top: 60.0),
+                child: Lottie.asset('assets/money.json'),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 14.0),
-                child: Text(
-                  'Earning Now',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                padding: const EdgeInsets.only(top: 15.0, left: 30, right: 30),
+                child: Center(
+                  child: Text(
+                    'Own A Motorcycle?',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                  ),
                 ),
               ),
-              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  'Join us! Turn your rides into earning opportunities with our delivery partner program. Your bike, your schedule, your earnings',
+                  style: TextStyle(fontSize: 15, color: Colors.grey.shade800),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.clip,
+                ),
+              ),
             ],
           ),
         ),

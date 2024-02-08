@@ -50,7 +50,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           // Positioned widget for UI elements
           Positioned(
-            bottom: 40,
+            bottom: 30,
             right: 20,
             child: GestureDetector(
               onTap: () {

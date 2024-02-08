@@ -11,23 +11,6 @@ class Onboarding2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 7.0),
-              child: Text(
-                'The Safety Of Your',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 5.0),
-              child: Text(
-                'Goods Is Our Priority',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-              ),
-            ),
-            // Add some spacing between text and animation
-            SizedBox(height: 20),
-
             // Lottie animation
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
@@ -35,6 +18,43 @@ class Onboarding2 extends StatelessWidget {
                 'assets/delivery.json',
               ),
             ),
+            // Use Padding widget individually for each text
+            Transform.translate(
+              offset: Offset(0.0, -50),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 7.0),
+                    child: Text(
+                      'The Safety Of Your',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: Text(
+                      'Goods Is Our Priority',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10.0, left: 30, right: 30),
+                    child: Text(
+                      'Your goods, our priority. Experience deliveries with a safety-first approach because your peace of mind matters',
+                      style:
+                          TextStyle(fontSize: 15, color: Colors.grey.shade800),
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Add some spacing between text and animation
+            SizedBox(height: 20),
           ],
         ),
       ),

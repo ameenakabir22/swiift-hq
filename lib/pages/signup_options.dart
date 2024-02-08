@@ -51,7 +51,7 @@ class SignUpOptions extends StatelessWidget {
                       ),
                       SizedBox(width: 10),
                       Padding(
-                        padding: const EdgeInsets.only(top: 30.0, left: 15),
+                        padding: const EdgeInsets.only(top: 30.0, right: 9),
                         child: Icon(
                           Icons.arrow_forward,
                           color: Colors.black,
@@ -77,7 +77,7 @@ class SignUpOptions extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 30.0, top: 50),
+                        padding: const EdgeInsets.only(left: 20.0, top: 50),
                         child: Text(
                           'Sign Up For Swift Deliveries',
                           overflow: TextOverflow.clip,
