@@ -49,73 +49,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
 
           // Positioned widget for UI elements
-          Container(
-            alignment: Alignment(0, 0.75),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // Skip button
-                GestureDetector(
-                    onTap: () {
-                      _controller.jumpToPage(2);
-                    },
-                    child: Material(
-                      color: Colors.black, // Set background color to black
-                      borderRadius: BorderRadius.circular(
-                          50), // Set a large value for complete roundness
-                      child: InkWell(
-                        onTap: () {
-                          // Add your onTap callback here
-                        },
-                        borderRadius: BorderRadius.circular(
-                            50), // Set the same value for complete roundness
-                        child: Container(
-                          width: 100, // Set a fixed width for the button
-                          height: 100, // Set a fixed height for the button
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Add your onTap callback here
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  Colors.black, // Set background color to black
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    50), // Set a large value for complete roundness
-                              ),
-                            ),
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-
-                    // Next or Done button
-                    /*onLastPage
-                     ? GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return SignUpOptions();
-                          }));
-                        },
-                        child: Text('Done'),
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          _controller.nextPage(
-                            duration: Duration(milliseconds: 500),
-                            curve: Curves.easeIn,
-                          );
-                        },
-                        child: Text('Next'),
-                      ), */
-                    )
-              ],
+          Positioned(
+            bottom: 40,
+            right: 20,
+            child: GestureDetector(
+              onTap: () {
+                if (onLastPage) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUpOptions()),
+                  );
+                } else {
+                  _controller.nextPage(
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.easeIn,
+                  );
+                }
+              },
+              child: Material(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(50),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],
