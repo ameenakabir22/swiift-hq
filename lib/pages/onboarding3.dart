@@ -26,7 +26,7 @@ class Onboarding3 extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(top: 10.0, left: 25, right: 25),
                 child: Text(
                   'Join us! Turn your rides into earning opportunities with our delivery partner program. Your bike, your schedule, your earnings',
                   style: TextStyle(fontSize: 15, color: Colors.grey.shade800),
