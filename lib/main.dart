@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swiift/pages/onboarding4.dart';
 import 'package:swiift/pages/splashscreen.dart';
+import 'package:sizer/sizer.dart';
 
 void main() => runApp(Swiift());
 
@@ -9,9 +10,11 @@ class Swiift extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: OnboardingScreen(),
-      debugShowCheckedModeBanner: false,
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        home: OnboardingScreen(),
+        debugShowCheckedModeBanner: false,
+      );
+    });
   }
 }
