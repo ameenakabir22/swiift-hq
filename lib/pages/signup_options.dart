@@ -22,7 +22,7 @@ class SignUpOptions extends StatelessWidget {
           },
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           GestureDetector(
             onTap: () {
