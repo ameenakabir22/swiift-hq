@@ -94,7 +94,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                     ),
                     SizedBox(width: 10),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20.0, right: 10),
+                      padding: const EdgeInsets.only(top: 70.0, right: 9),
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,

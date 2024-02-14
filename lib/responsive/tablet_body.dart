@@ -18,9 +18,13 @@ class _MyTabletBodyState extends State<MyTabletBody> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.black,
+          icon: Padding(
+            padding: const EdgeInsets.only(left: 15.0, top: 15),
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Colors.black,
+              size: 40,
+            ),
           ),
           onPressed: () {
             // Navigate back to the previous page when the back arrow is pressed
@@ -83,7 +87,7 @@ class _MyTabletBodyState extends State<MyTabletBody> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 60.0, top: 120),
+                        padding: const EdgeInsets.only(left: 55.0, top: 120),
                         child: Text(
                           'Sign Up For Swift Deliveries',
                           overflow: TextOverflow.clip,
@@ -94,7 +98,7 @@ class _MyTabletBodyState extends State<MyTabletBody> {
                     ),
                     SizedBox(width: 30),
                     Padding(
-                      padding: const EdgeInsets.only(top: 60.0, right: 30),
+                      padding: const EdgeInsets.only(top: 120.0, right: 30),
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,
