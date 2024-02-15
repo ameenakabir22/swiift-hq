@@ -46,7 +46,7 @@ class _MyTabletBodyState extends State<MyTabletBody> {
               children: [
                 // the row containing the options
                 Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
+                  padding: const EdgeInsets.only(top: 180.0),
                   child: Row(
                     children: [
                       Expanded(
@@ -61,7 +61,7 @@ class _MyTabletBodyState extends State<MyTabletBody> {
                       ),
                       SizedBox(width: 30),
                       Padding(
-                        padding: const EdgeInsets.only(top: 90.0, right: 27),
+                        padding: const EdgeInsets.only(top: 60.0, right: 27),
                         child: Icon(
                           Icons.arrow_forward,
                           color: Colors.black,
@@ -87,7 +87,7 @@ class _MyTabletBodyState extends State<MyTabletBody> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 55.0, top: 120),
+                        padding: const EdgeInsets.only(left: 55.0, top: 160),
                         child: Text(
                           'Sign Up For Swift Deliveries',
                           overflow: TextOverflow.clip,
@@ -98,7 +98,7 @@ class _MyTabletBodyState extends State<MyTabletBody> {
                     ),
                     SizedBox(width: 30),
                     Padding(
-                      padding: const EdgeInsets.only(top: 120.0, right: 30),
+                      padding: const EdgeInsets.only(top: 165.0, right: 30),
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.black,

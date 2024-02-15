@@ -36,7 +36,7 @@ class SignUpOptions extends StatelessWidget {
               children: [
                 // the row containing the options
                 Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
+                  padding: const EdgeInsets.only(top: 80.0),
                   child: Row(
                     children: [
                       Expanded(
@@ -77,7 +77,7 @@ class SignUpOptions extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 50),
+                        padding: const EdgeInsets.only(left: 20.0, top: 80),
                         child: Text(
                           'Sign Up For Swift Deliveries',
                           overflow: TextOverflow.clip,
