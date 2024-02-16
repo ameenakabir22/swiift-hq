@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/signup.dart';
 
 class Onboarding3 extends StatelessWidget {
@@ -8,28 +9,30 @@ class Onboarding3 extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+        padding: EdgeInsets.only(top: 30.h),
         child: Center(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 60.0),
+                padding: EdgeInsets.only(top: 60.h),
                 child: Lottie.asset('assets/money.json'),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15.0, left: 30, right: 30),
+                padding: EdgeInsets.only(top: 15.h, left: 30.w, right: 30.w),
                 child: Center(
                   child: Text(
                     'Own A Motorcycle?',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                    style:
+                        TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w800),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0, left: 25, right: 25),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 25.w),
                 child: Text(
                   'Join us! Turn your rides into earning opportunities with our delivery partner program. Your bike, your schedule, your earnings',
-                  style: TextStyle(fontSize: 15, color: Colors.grey.shade800),
+                  style:
+                      TextStyle(fontSize: 15.sp, color: Colors.grey.shade800),
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.clip,
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/onboarding.dart';
 import 'package:swiift/pages/onboarding2.dart';
 import 'package:swiift/pages/onboarding3.dart';
@@ -32,12 +33,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onLastPage = (index == 2);
               });
             },
-            children: [Onboarding(), Onboarding2(), Onboarding3()],
+            children: [
+              Onboarding(),
+              Onboarding2(),
+              Onboarding3(),
+            ],
           ),
 
           // Dot indicators
-          Transform.translate(
-            offset: Offset(20.0, 585.0),
+          Positioned(
+            left: 20,
+            bottom: 585,
             child: SmoothPageIndicator(
               controller: _controller,
               count: 3,
@@ -50,8 +56,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           // Positioned widget for UI elements
           Positioned(
-            bottom: 30,
-            right: 20,
+            bottom: 30.h,
+            right: 20.w,
             child: GestureDetector(
               onTap: () {
                 if (onLastPage) {
@@ -68,17 +74,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
               child: Material(
                 color: Colors.black,
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(50.r),
                 child: InkWell(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(50.r),
                   child: Container(
-                    width: 50,
-                    height: 50,
+                    width: 50.w,
+                    height: 50.h,
                     alignment: Alignment.center,
                     child: Icon(
                       Icons.arrow_forward_ios_outlined,
                       color: Colors.white,
-                      size: 25,
+                      size: 25.sp,
                     ),
                   ),
                 ),

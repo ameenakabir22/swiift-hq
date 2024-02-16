@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swiift/pages/signup.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpOptions extends StatelessWidget {
   const SignUpOptions({Key? key}) : super(key: key);
@@ -36,34 +37,32 @@ class SignUpOptions extends StatelessWidget {
               children: [
                 // the row containing the options
                 Padding(
-                  padding: const EdgeInsets.only(top: 80.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 80.0.h, horizontal: 20.w),
                   child: Row(
                     children: [
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20, top: 20),
-                          child: Text(
-                            'Sign Up To Deliver',
-                            style: TextStyle(
-                                fontSize: 33, fontWeight: FontWeight.w700),
+                        child: Text(
+                          'Sign Up To Deliver',
+                          style: TextStyle(
+                            fontSize: 33.sp,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30.0, right: 9),
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: Colors.black,
-                          size: 40,
-                        ),
+                      SizedBox(width: 10.w),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.black,
+                        size: 40.sp,
                       ),
                     ],
                   ),
                 ),
                 // adds a faint border
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 50),
+                  margin:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 50.h),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -73,32 +72,33 @@ class SignUpOptions extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0, top: 80),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 80.h, horizontal: 20.w),
+                  child: Row(
+                    children: [
+                      Expanded(
                         child: Text(
                           'Sign Up For Swift Deliveries',
                           overflow: TextOverflow.clip,
                           style: TextStyle(
-                              fontSize: 33, fontWeight: FontWeight.w700),
+                            fontSize: 33.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, right: 10),
-                      child: Icon(
+                      SizedBox(width: 10.w),
+                      Icon(
                         Icons.arrow_forward,
                         color: Colors.black,
-                        size: 40,
+                        size: 40.sp,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 50),
+                  margin:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 50.h),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(

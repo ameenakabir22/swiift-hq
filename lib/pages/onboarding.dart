@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/login.dart';
 import 'package:swiift/pages/onboarding2.dart';
 
@@ -14,26 +15,29 @@ class _OnboardingState extends State<Onboarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(20.w),
+              child: Padding(
+                padding: EdgeInsets.only(left: 10.w),
+                child: Text(
+                  'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
+                  style:
+                      TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w800),
+                ),
               ),
             ),
-          ),
-          Transform.translate(
-            offset: Offset(0.0, -60.0),
-            child: Image.asset(
-              'assets/onboardingimg.jpeg',
+            Transform.translate(
+              offset: Offset(0.0, -60.h),
+              child: Image.asset(
+                'assets/onboardingimg.jpeg',
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

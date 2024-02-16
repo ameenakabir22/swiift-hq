@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swiift/pages/onboarding.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swiift/pages/onboarding4.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,7 +24,11 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
 
     // Navigate to the next screen (e.g., Onboarding)
-    Navigator.of(context).push(_createFadeRoute1());
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => OnboardingScreen()),
+    );
+    ;
   }
 
   @override

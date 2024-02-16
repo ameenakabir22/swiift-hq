@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/onboarding3.dart';
 
 class Onboarding2 extends StatelessWidget {
@@ -13,39 +14,39 @@ class Onboarding2 extends StatelessWidget {
           children: [
             // Lottie animation
             Padding(
-              padding: const EdgeInsets.only(left: 10.0),
+              padding: EdgeInsets.only(left: 10.w),
               child: Lottie.asset(
                 'assets/delivery.json',
               ),
             ),
             // Use Padding widget individually for each text
             Transform.translate(
-              offset: Offset(0.0, -50),
+              offset: Offset(0.0, -50.h),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 7.0),
+                    padding: EdgeInsets.only(left: 7.w),
                     child: Text(
                       'The Safety Of Your',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                      style: TextStyle(
+                          fontSize: 30.sp, fontWeight: FontWeight.w800),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 5.0),
+                    padding: EdgeInsets.only(left: 5.w),
                     child: Text(
                       'Goods Is Our Priority',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+                      style: TextStyle(
+                          fontSize: 30.sp, fontWeight: FontWeight.w800),
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: 10.0, left: 30, right: 30),
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 30.w),
                     child: Text(
                       'Your goods, our priority. Experience deliveries with a safety-first approach because your peace of mind matters',
-                      style:
-                          TextStyle(fontSize: 15, color: Colors.grey.shade800),
+                      style: TextStyle(
+                          fontSize: 15.sp, color: Colors.grey.shade800),
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.clip,
                     ),
@@ -54,7 +55,7 @@ class Onboarding2 extends StatelessWidget {
               ),
             ),
             // Add some spacing between text and animation
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
