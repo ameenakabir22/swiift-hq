@@ -26,6 +26,7 @@ flutter:
      - assets/delivery.json
      - assets/onboardingimg.jpeg
      - assets/money.json
+     - assets/greenimg.json
 
      
   # fonts:

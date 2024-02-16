@@ -43,20 +43,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           // Dot indicators
           Positioned(
             left: 20,
-            bottom: 585,
-            child: SmoothPageIndicator(
-              controller: _controller,
-              count: 3,
-              effect: const ExpandingDotsEffect(
-                activeDotColor: Colors.black,
-                dotHeight: 6,
+            bottom: 20,
+            child: Container(
+              width: 300, // Adjust width as needed
+              height: 20, // Adjust height as needed
+              child: SmoothPageIndicator(
+                controller: _controller,
+                count: 3,
+                effect: const ExpandingDotsEffect(
+                  activeDotColor: Colors.black,
+                  dotHeight: 6,
+                ),
               ),
             ),
           ),
 
           // Positioned widget for UI elements
           Positioned(
-            bottom: 30.h,
+            bottom: 8.h,
             right: 20.w,
             child: GestureDetector(
               onTap: () {
