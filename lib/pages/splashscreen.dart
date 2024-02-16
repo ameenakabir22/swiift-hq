@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swiift/pages/onboarding.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -31,16 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Container(
-          width: 50.w,
-          height: 50.h,
-          child: Sizer(
-            builder: (context, orientation, deviceType) {
-              return Image.asset(
-                'assets/swiiftlogo.png',
-                height: 200,
-                width: 200,
-              );
-            },
+          width: 200.w,
+          height: 200.h,
+          child: Image.asset(
+            'assets/swiiftlogo.png',
+            height: 400,
+            width: 400,
           ),
         ),
       ),
