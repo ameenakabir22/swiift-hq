@@ -51,10 +51,13 @@ class SignUpOptions extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 10.w),
-                      Icon(
-                        Icons.arrow_forward,
-                        color: Colors.black,
-                        size: 40.sp,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.black,
+                          size: 40.sp,
+                        ),
                       ),
                     ],
                   ),
