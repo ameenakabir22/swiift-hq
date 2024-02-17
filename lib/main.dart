@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swiift/pages/login.dart';
 import 'package:swiift/pages/splashscreen.dart';
 
 void main() => runApp(Swiift());
@@ -15,7 +16,7 @@ class Swiift extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
-            home: SplashScreen(),
+            home: LogIn(),
             debugShowCheckedModeBanner: false,
           );
         });

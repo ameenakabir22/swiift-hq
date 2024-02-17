@@ -31,7 +31,7 @@ class _OnboardingState extends State<Onboarding> {
               ),
             ),
             Transform.translate(
-              offset: Offset(0.0, -60.h),
+              offset: Offset(0.0, -20.h),
               child: Image.asset(
                 'assets/onboardingimg.jpeg',
               ),

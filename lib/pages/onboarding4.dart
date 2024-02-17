@@ -78,9 +78,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
               child: Material(
                 color: Colors.black,
-                borderRadius: BorderRadius.circular(50.r),
+                borderRadius: BorderRadius.circular(25.r),
                 child: InkWell(
-                  borderRadius: BorderRadius.circular(50.r),
+                  borderRadius: BorderRadius.circular(25.r),
                   child: Container(
                     width: 50.w,
                     height: 50.h,
