@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swiift/components/my_button.dart';
+import 'package:swiift/components/my_textfield.dart';
 
 class LogIn extends StatelessWidget {
-  const LogIn({Key? key}) : super(key: key);
+  LogIn({Key? key}) : super(key: key);
+
+  // text editing controller
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +29,8 @@ class LogIn extends StatelessWidget {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(height: 50.h),
           // logo
           Center(
             child: Image.asset(
@@ -38,25 +43,48 @@ class LogIn extends StatelessWidget {
 
           // log in text
           Text(
-            'Log In',
-            style: TextStyle(fontSize: 16),
+            "Welcome back, you've been missed",
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Poppins-Bold',
+              color: Colors.black54,
+            ),
           ),
           SizedBox(height: 25.h),
 
-          // Full name field
+          // email
+          MyTextField(
+            controller: emailController,
+            hintText: 'Email',
+            obscureText: false,
+          ),
+          SizedBox(height: 10.h),
+
+          // password
+          MyTextField(
+            controller: passwordController,
+            hintText: 'Password',
+            obscureText: true,
+          ),
+          SizedBox(height: 10.h),
+
+          // forgot password
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Forgot Password?',
+                  style: TextStyle(color: Colors.grey[600]),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-              ),
+              ],
             ),
-          )
+          ),
+
+          // sign in button
+          MyButton(),
         ],
       ),
     );
