@@ -22,8 +22,10 @@ class Onboarding3 extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Own A Motorcycle?',
-                    style:
-                        TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w800),
+                    style: TextStyle(
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'Poppins-Bold'),
                   ),
                 ),
               ),

@@ -10,6 +10,16 @@ class LogIn extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  // sign user in method
+  void signUserIn() {
+    // Implement sign in functionality here
+    // For example:
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    // Perform sign in operation using email and password
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +49,6 @@ class LogIn extends StatelessWidget {
               height: 200.h,
             ),
           ), // Added comma here
-          SizedBox(height: 50.h),
 
           // log in text
           Text(
@@ -82,9 +91,38 @@ class LogIn extends StatelessWidget {
               ],
             ),
           ),
-
+          SizedBox(
+            height: 15.h,
+          ),
           // sign in button
-          MyButton(),
+          MyButton(
+            onTap: signUserIn, // Pass function reference without parentheses
+          ),
+          SizedBox(
+            height: 50.h,
+          ),
+
+          // or you can continue with
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Divider(
+                    thickness: 0.5,
+                    color: Colors.grey[400],
+                  ),
+                ),
+                Text('Or Continue with'),
+                Expanded(
+                  child: Divider(
+                    thickness: 0.5,
+                    color: Colors.grey[400],
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

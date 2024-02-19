@@ -29,7 +29,9 @@ class Onboarding2 extends StatelessWidget {
                     child: Text(
                       'The Safety Of Your',
                       style: TextStyle(
-                          fontSize: 30.sp, fontWeight: FontWeight.w800),
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Poppins-Bold'),
                     ),
                   ),
                   Padding(
@@ -37,7 +39,9 @@ class Onboarding2 extends StatelessWidget {
                     child: Text(
                       'Goods Is Our Priority',
                       style: TextStyle(
-                          fontSize: 30.sp, fontWeight: FontWeight.w800),
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Poppins-Bold'),
                     ),
                   ),
                   Padding(

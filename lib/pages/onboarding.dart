@@ -25,8 +25,10 @@ class _OnboardingState extends State<Onboarding> {
                 padding: EdgeInsets.only(left: 10.w),
                 child: Text(
                   'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
-                  style:
-                      TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w800),
+                  style: TextStyle(
+                      fontSize: 30.sp,
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Poppins-Bold'),
                 ),
               ),
             ),
