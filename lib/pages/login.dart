@@ -1,7 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/components/my_button.dart';
 import 'package:swiift/components/my_textfield.dart';
+import 'package:swiift/components/square_tile.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LogIn extends StatelessWidget {
   LogIn({Key? key}) : super(key: key);
@@ -38,92 +42,159 @@ class LogIn extends StatelessWidget {
           },
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // logo
-          Center(
-            child: Image.asset(
-              'assets/swiiftlogo.png',
-              width: 200.w,
-              height: 200.h,
+      body: Transform.translate(
+        offset: Offset(0.0, -40.h),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            //blob
+            SvgPicture.asset(
+              'assets/blob.svg',
+              color: Colors.blue, // Change color as desired
             ),
-          ), // Added comma here
+            // logo
+            Center(
+              child: Image.asset(
+                'assets/swiiftlogo.png',
+                width: 200.w,
+                height: 200.h,
+              ),
+            ), // Added comma here
 
-          // log in text
-          Text(
-            "Welcome back, you've been missed",
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Poppins-Bold',
-              color: Colors.black54,
+            // log in text
+            Transform.translate(
+              offset: Offset(0.0, -50.h),
+              child: Text(
+                "Welcome back, you've been missed",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins-Bold',
+                  color: Colors.black54,
+                ),
+              ),
             ),
-          ),
-          SizedBox(height: 25.h),
+            const SizedBox(height: 25),
 
-          // email
-          MyTextField(
-            controller: emailController,
-            hintText: 'Email',
-            obscureText: false,
-          ),
-          SizedBox(height: 10.h),
+            // email
+            Transform.translate(
+              offset: Offset(0.0, -50.h),
+              child: MyTextField(
+                controller: emailController,
+                hintText: 'Email',
+                obscureText: false,
+              ),
+            ),
+            const SizedBox(height: 10),
 
-          // password
-          MyTextField(
-            controller: passwordController,
-            hintText: 'Password',
-            obscureText: true,
-          ),
-          SizedBox(height: 10.h),
+            // password
+            Transform.translate(
+              offset: Offset(0.0, -50.h),
+              child: MyTextField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+            ),
+            const SizedBox(height: 10),
 
-          // forgot password
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            // forgot password
+            Transform.translate(
+              offset: Offset(0.0, -50.h),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            // sign in button
+            Transform.translate(
+              offset: Offset(0.0, -30.h),
+              child: MyButton(
+                onTap:
+                    signUserIn, // Pass function reference without parentheses
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+
+            // or you can continue with
+            Transform.translate(
+              offset: Offset(0.0, -20.h),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Text('Or Continue with'),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+
+            // google + apple sign in
+            Transform.translate(
+              offset: Offset(0.0, 5.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  // google icon
+
+                  SquareTile(imagePath: 'assets/google.png'),
+
+                  SizedBox(
+                    width: 25,
+                  ),
+                  //apple icon
+                  SquareTile(imagePath: 'assets/apple.png'),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            // Dont have an account ?
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text("Don't have an account?"),
+                SizedBox(
+                  width: 4,
+                ),
                 Text(
-                  'Forgot Password?',
-                  style: TextStyle(color: Colors.grey[600]),
+                  'Sign up',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ],
-            ),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          // sign in button
-          MyButton(
-            onTap: signUserIn, // Pass function reference without parentheses
-          ),
-          SizedBox(
-            height: 50.h,
-          ),
-
-          // or you can continue with
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: Colors.grey[400],
-                  ),
-                ),
-                Text('Or Continue with'),
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: Colors.grey[400],
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

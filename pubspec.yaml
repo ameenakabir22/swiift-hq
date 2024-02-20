@@ -13,6 +13,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0
   sizer: ^2.0.15
   flutter_screenutil: ^5.8.4
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +28,8 @@ flutter:
      - assets/onboardingimg.jpeg
      - assets/money.json
      - assets/greenimg.json
+     - assets/google.png
+     - assets/apple.png
 
      
   fonts:
