@@ -77,10 +77,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 }
               },
               child: Material(
-                color: Colors.black,
                 borderRadius: BorderRadius.circular(25.r),
+                color: Colors.black,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(25.r),
+                  onTap: () {
+                    // Add your onTap logic here
+                  },
                   child: Container(
                     width: 50.w,
                     height: 50.h,
