@@ -24,7 +24,7 @@ class LogInContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white70,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -134,7 +134,13 @@ class LogInContainer extends StatelessWidget {
                       color: Colors.grey[400],
                     ),
                   ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
                   Text('Or Continue with'),
+                  SizedBox(
+                    width: 10.w,
+                  ),
                   Expanded(
                     child: Divider(
                       thickness: 0.5,
