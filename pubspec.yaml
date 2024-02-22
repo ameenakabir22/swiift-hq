@@ -30,6 +30,7 @@ flutter:
      - assets/greenimg.json
      - assets/google.png
      - assets/apple.png
+     - assets/loginbackground.jpg
 
      
   fonts:

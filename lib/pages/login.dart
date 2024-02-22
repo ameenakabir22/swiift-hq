@@ -24,6 +24,33 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LogInContainer();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          /*  Image.asset(
+            'assets/loginbackground.jpg',
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              top: ScreenUtil().setHeight(15.0),
+              left: ScreenUtil().setWidth(15.0),
+            ),
+            child: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // Navigate back to the previous page when the back arrow is pressed
+                Navigator.pop(context);
+              },
+            ),
+          ), */
+          // log in container
+          LogInContainer(),
+        ],
+      ),
+    );
   }
 }

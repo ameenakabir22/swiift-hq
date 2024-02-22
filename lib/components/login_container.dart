@@ -78,7 +78,7 @@ class LogInContainer extends StatelessWidget {
               obscureText: false,
             ),
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: 15.h),
 
           // password
           Transform.translate(
