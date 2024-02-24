@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyButton extends StatelessWidget {
+class MyButtonSignUp extends StatelessWidget {
   final Function()? onTap;
 
-  const MyButton({required this.onTap}) : super();
+  const MyButtonSignUp({required this.onTap}) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class MyButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'Log In',
+            'Sign Up',
             style: TextStyle(color: Colors.white),
           ),
         ),
