@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:swiift/components/my_button_signup.dart';
 import 'package:swiift/components/square_tile.dart';
 import 'package:swiift/pages/login.dart';
 import 'package:swiift/components/my_button.dart';
@@ -34,42 +33,46 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Back button
-          Padding(
-            padding: EdgeInsets.only(left: 10.w, top: 10.h),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Back button
+            Padding(
+              padding: EdgeInsets.only(left: 10.w, top: 10.h),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    // Navigate back to the previous page when the back arrow is pressed
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () {
-                  // Navigate back to the previous page when the back arrow is pressed
-                  Navigator.pop(context);
-                },
               ),
             ),
-          ),
-          // Logo
-          Transform.translate(
-            offset: Offset(0.0, -100.h),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.h),
-              child: Image.asset(
-                'assets/swiiftlogo.png',
-                width: 200.w,
-                height: 200.h,
-              ),
+            SizedBox(
+              height: 10.h,
             ),
-          ),
-          // Sign up text
-          Transform.translate(
-            offset: Offset(0.0, -120.h),
-            child: Text(
+
+            // sign up text
+            Text(
+              'Sign Up',
+              style: TextStyle(
+                  fontFamily: 'Poppins-Bold',
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+
+            SizedBox(
+              height: 30.h,
+            ),
+
+            // Sign up text
+            Text(
               "Create your Account",
               style: TextStyle(
                 fontSize: 20.sp,
@@ -78,115 +81,112 @@ class _SignUpState extends State<SignUp> {
                 color: Colors.black54,
               ),
             ),
-          ),
-          SizedBox(height: 25.h),
-          // Full name field
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: MyTextField(
+            SizedBox(height: 20.h),
+            // Full name field
+            MyTextField(
               controller: fullNameController,
               hintText: 'Full Name',
               obscureText: false,
             ),
-          ),
-          SizedBox(height: 15.h),
-          // Email field
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: MyTextField(
+            SizedBox(height: 10.h),
+            // Email field
+            MyTextField(
               controller: emailController,
               hintText: 'Email',
               obscureText: false,
             ),
-          ),
-          SizedBox(height: 15.h),
-          // Password field
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: MyTextField(
+            SizedBox(height: 10.h),
+            // Password field
+            MyTextField(
               controller: passwordController,
               hintText: 'Password',
               obscureText: true,
             ),
-          ),
-          SizedBox(height: 15.h),
-          // Phone number field
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: MyTextField(
+            SizedBox(height: 10.h),
+            // Phone number field
+            MyTextField(
               controller: phoneController,
               hintText: 'Phone Number',
               obscureText: false,
             ),
-          ),
-          SizedBox(height: 25.h),
-          // Sign up button
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: MyButtonSignUp(
-              onTap: signUpUser,
+            SizedBox(height: 30.h),
+            // Sign up button
+            MyButton(
+              onTap: signUpUser, // Pass function reference without parentheses
             ),
-          ),
-          SizedBox(height: 20.h),
-          // Or Continue with divider
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: Colors.grey[400],
+            SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey[400],
+                    ),
                   ),
-                ),
-                SizedBox(width: 10.w),
-                Text('Or Continue with'),
-                SizedBox(width: 10.w),
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: Colors.grey[400],
+                  SizedBox(
+                    width: 10.w,
                   ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 5.h),
-          // Google + Apple sign in
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              // Google icon
-              SquareTile(imagePath: 'assets/google.png'),
-              SizedBox(width: 25),
-              // Apple icon
-              SquareTile(imagePath: 'assets/apple.png'),
-            ],
-          ),
-          SizedBox(height: 20.h),
-          // Already have an account text
-          GestureDetector(
-            onTap: () {
-              // Navigate to the login page when the "Log In" text is pressed
-              Navigator.of(context).push(_createRouteForLogin());
-            },
-            child: RichText(
-              text: TextSpan(
-                text: "Already have an account ? ",
-                style: TextStyle(color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Log In',
-                    style: TextStyle(
-                      color: Colors.black, // Match the button color
-                      fontWeight: FontWeight.w700,
+                  Text('Or Continue with'),
+                  SizedBox(
+                    width: 20.w,
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey[400],
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 30.h,
+            ),
+
+            // google + apple sign in
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                // google icon
+                SquareTile(imagePath: 'assets/google.png'),
+                SizedBox(
+                  width: 25,
+                ),
+                //apple icon
+                SquareTile(
+                  imagePath: 'assets/apple.png',
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 35.h,
+            ),
+            GestureDetector(
+              onTap: () {
+                // Navigate to the login page when the "Log In" text is pressed
+                Navigator.of(context).push(_createRouteForLogin());
+              },
+              child: RichText(
+                text: TextSpan(
+                  text: "Already have an account ? ",
+                  style: TextStyle(color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Log In',
+                      style: TextStyle(
+                        color: Colors.black, // Match the button color
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // blob 2
+          ],
+        ),
       ),
     );
   }
