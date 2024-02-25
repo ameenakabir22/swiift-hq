@@ -46,11 +46,13 @@ class LogIn extends StatelessWidget {
           // logo
           Transform.translate(
             offset: Offset(0.0, -30.h),
-            child: Center(
-              child: Image.asset(
-                'assets/swiiftlogo.png',
-                width: 200,
-                height: 200,
+            child: FittedBox(
+              child: Center(
+                child: Image.asset(
+                  'assets/swiiftlogo.png',
+                  width: 200.h,
+                  height: 200.w,
+                ),
               ),
             ),
           ), // Added comma here
