@@ -39,9 +39,9 @@ class Onboarding2 extends StatelessWidget {
                     child: Text(
                       'Goods Is Our Priority',
                       style: TextStyle(
-                          fontSize: 30.sp,
-                          fontWeight: FontWeight.w800,
-                          fontFamily: 'Poppins-Bold'),
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ),
                   Padding(

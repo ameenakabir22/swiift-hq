@@ -15,30 +15,29 @@ class _OnboardingState extends State<Onboarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(20.w),
-              child: Padding(
-                padding: EdgeInsets.only(left: 10.w),
-                child: Text(
-                  'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
-                  style: TextStyle(
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'Poppins-Bold'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(20.w),
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.w),
+              child: Text(
+                'Connecting Reliable Delivery Partners To Your Doorsteps, Anytime, Anywhere',
+                style: TextStyle(
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
             ),
-            Transform.translate(
-              offset: Offset(0.0, -20.h),
-              child: Image.asset(
-                'assets/onboardingimg.jpeg',
-              ),
+          ),
+          Transform.translate(
+            offset: Offset(0.0, -20.h),
+            child: Image.asset(
+              'assets/onboardingimg.jpeg',
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -42,8 +42,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           // Dot indicators
           Positioned(
-            left: 20,
-            bottom: 20,
+            left: 20.w,
+            bottom: 45.h,
             child: Container(
               width: 300, // Adjust width as needed
               height: 20, // Adjust height as needed
@@ -60,39 +60,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           // Positioned widget for UI elements
           Positioned(
-            bottom: 8.h,
+            bottom: 30.h,
             right: 20.w,
-            child: GestureDetector(
-              onTap: () {
-                if (onLastPage) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignUpOptions()),
-                  );
-                } else {
-                  _controller.nextPage(
-                    duration: Duration(milliseconds: 500),
-                    curve: Curves.easeIn,
-                  );
-                }
-              },
-              child: Material(
-                borderRadius: BorderRadius.circular(25.r),
-                color: Colors.black,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(25.r),
-                  onTap: () {
-                    // Add your onTap logic here
-                  },
-                  child: Container(
-                    width: 50.w,
-                    height: 50.h,
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: Colors.white,
-                      size: 25.sp,
-                    ),
+            child: Material(
+              borderRadius: BorderRadius.circular(30.r),
+              color: Colors.black,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(30.r),
+                onTap: () {
+                  if (onLastPage) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpOptions()),
+                    );
+                  } else {
+                    _controller.nextPage(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeIn,
+                    );
+                  }
+                },
+                child: Container(
+                  width: 50.w,
+                  height: 50.h,
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: Colors.white,
+                    size: 25.sp,
                   ),
                 ),
               ),
