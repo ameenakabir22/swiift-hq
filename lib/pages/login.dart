@@ -49,8 +49,8 @@ class LogIn extends StatelessWidget {
             child: Center(
               child: Image.asset(
                 'assets/swiiftlogo.png',
-                width: 200.w,
-                height: 200.h,
+                width: 200,
+                height: 200,
               ),
             ),
           ), // Added comma here
