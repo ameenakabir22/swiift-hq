@@ -17,7 +17,7 @@ class Swiift extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
-            home: SplashScreen(),
+            home: LogIn(),
             debugShowCheckedModeBanner: false,
           );
         });

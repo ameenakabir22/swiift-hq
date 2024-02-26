@@ -25,183 +25,188 @@ class LogIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // back button
-          Transform.translate(
-            offset: Offset(-150.w, 10.h),
-            child: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: Colors.black,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // back button
+            Transform.translate(
+              offset: Offset(-150.w, 10.h),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  // Navigate back to the previous page when the back arrow is pressed
+                  Navigator.pop(context);
+                },
               ),
-              onPressed: () {
-                // Navigate back to the previous page when the back arrow is pressed
-                Navigator.pop(context);
-              },
             ),
-          ),
-          // logo
-          Transform.translate(
-            offset: Offset(0.0, -30.h),
-            child: FittedBox(
+            // logo
+            Transform.translate(
+              offset: Offset(0.0, -30.h),
               child: Center(
-                child: Image.asset(
-                  'assets/swiiftlogo.png',
+                child: Container(
                   width: 200.h,
                   height: 200.w,
+                  child: Image.asset(
+                    'assets/swiiftlogo.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+            ), // Added comma here
+
+            // log in text
+            Transform.translate(
+              offset: Offset(0.0, -60.h),
+              child: Text(
+                "Welcome back, you've been missed",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins-Bold',
+                  color: Colors.black54,
                 ),
               ),
             ),
-          ), // Added comma here
+            SizedBox(height: 25.h),
 
-          // log in text
-          Transform.translate(
-            offset: Offset(0.0, -60.h),
-            child: Text(
-              "Welcome back, you've been missed",
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins-Bold',
-                color: Colors.black54,
+            // email
+            Transform.translate(
+              offset: Offset(0.0, -70.h),
+              child: MyTextField(
+                controller: emailController,
+                hintText: 'Email',
+                obscureText: false,
               ),
             ),
-          ),
-          SizedBox(height: 25.h),
+            SizedBox(height: 15.h),
 
-          // email
-          Transform.translate(
-            offset: Offset(0.0, -70.h),
-            child: MyTextField(
-              controller: emailController,
-              hintText: 'Email',
-              obscureText: false,
+            // password
+            Transform.translate(
+              offset: Offset(0.0, -70.h),
+              child: MyTextField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true,
+              ),
             ),
-          ),
-          SizedBox(height: 15.h),
+            SizedBox(height: 10.h),
 
-          // password
-          Transform.translate(
-            offset: Offset(0.0, -70.h),
-            child: MyTextField(
-              controller: passwordController,
-              hintText: 'Password',
-              obscureText: true,
+            // forgot password
+            Transform.translate(
+              offset: Offset(0.0, -60.h),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-          SizedBox(height: 10.h),
+            SizedBox(
+              height: 10.h,
+            ),
+            // sign in button
+            Transform.translate(
+              offset: Offset(0.0, -50.h),
+              child: MyButton(
+                onTap:
+                    signUserIn, // Pass function reference without parentheses
+              ),
+            ),
+            SizedBox(
+              height: 50.h,
+            ),
 
-          // forgot password
-          Transform.translate(
-            offset: Offset(0.0, -60.h),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.w),
+            // or you can continue with
+            Transform.translate(
+              offset: Offset(0.0, -50.h),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Text('Or Continue with'),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+
+            // google + apple sign in
+            Transform.translate(
+              offset: Offset(0.0, -15.h),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          // sign in button
-          Transform.translate(
-            offset: Offset(0.0, -50.h),
-            child: MyButton(
-              onTap: signUserIn, // Pass function reference without parentheses
-            ),
-          ),
-          SizedBox(
-            height: 50.h,
-          ),
-
-          // or you can continue with
-          Transform.translate(
-            offset: Offset(0.0, -50.h),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Divider(
-                      thickness: 0.5,
-                      color: Colors.grey[400],
-                    ),
-                  ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  // google icon
+                  SquareTile(imagePath: 'assets/google.png'),
                   SizedBox(
-                    width: 10.w,
+                    width: 25,
                   ),
-                  Text('Or Continue with'),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: Divider(
-                      thickness: 0.5,
-                      color: Colors.grey[400],
-                    ),
+                  //apple icon
+                  SquareTile(
+                    imagePath: 'assets/apple.png',
                   ),
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-
-          // google + apple sign in
-          Transform.translate(
-            offset: Offset(0.0, -15.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                // google icon
-                SquareTile(imagePath: 'assets/google.png'),
-                SizedBox(
-                  width: 25,
-                ),
-                //apple icon
-                SquareTile(
-                  imagePath: 'assets/apple.png',
-                ),
-              ],
+            SizedBox(
+              height: 20.h,
             ),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          // Dont have an account ?
-          GestureDetector(
-            onTap: () {
-              // Navigate to the sign up page when the "Sign up" text is pressed
-              Navigator.of(context).push(_createRoute2());
-            },
-            child: RichText(
-              text: TextSpan(
-                text: "Don't have an account ? ",
-                style: TextStyle(color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Sign Up',
-                    style: TextStyle(
-                      color: Colors.black, // Match the button color
-                      fontWeight: FontWeight.w700,
+            // Dont have an account ?
+            GestureDetector(
+              onTap: () {
+                // Navigate to the sign up page when the "Sign up" text is pressed
+                Navigator.of(context).push(_createRoute2());
+              },
+              child: RichText(
+                text: TextSpan(
+                  text: "Don't have an account ? ",
+                  style: TextStyle(color: Colors.black),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Sign Up',
+                      style: TextStyle(
+                        color: Colors.black, // Match the button color
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

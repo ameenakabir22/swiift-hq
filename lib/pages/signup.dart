@@ -13,20 +13,48 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  // Define the regular expression pattern
+
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final phoneController = TextEditingController();
 
-  void signUpUser() {
-    // Implement sign-up functionality here
-    // For example:
-    String fullName = fullNameController.text;
-    String email = emailController.text;
+  String? signUpUser() {
+    String fullName = fullNameController.text.trim();
+    String email = emailController.text.trim();
     String password = passwordController.text;
-    String phoneNumber = phoneController.text;
+    String phoneNumber = phoneController.text.trim();
 
-    // Perform sign-up operation using provided details
+    if (fullName.isEmpty) {
+      return 'Please enter your full name';
+    }
+
+    // Email validation using a regular expression
+    // This pattern checks for a basic email format but may not cover all edge cases
+    // You can use a more comprehensive pattern based on your requirements
+    RegExp emailPattern = RegExp(
+      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+      caseSensitive: false,
+      multiLine: false,
+    );
+    if (!emailPattern.hasMatch(email)) {
+      return 'Please enter a valid email';
+    }
+
+    // Password validation (minimum 8 characters)
+    if (password.length < 8) {
+      return 'Password must be at least 8 characters long';
+    }
+
+    // Phone number validation (basic format check)
+    RegExp phonePattern = RegExp(r'^[0-9]{10}$');
+    if (!phonePattern.hasMatch(phoneNumber)) {
+      return 'Please enter a valid phone number';
+    }
+
+    // If all validations pass, return null
+    return null;
   }
 
   @override
@@ -99,14 +127,14 @@ class _SignUpState extends State<SignUp> {
             // Password field
             MyTextField(
               controller: passwordController,
-              hintText: 'Password',
+              hintText: 'Phone Number',
               obscureText: true,
             ),
             SizedBox(height: 10.h),
             // Phone number field
             MyTextField(
               controller: phoneController,
-              hintText: 'Phone Number',
+              hintText: 'Password',
               obscureText: false,
             ),
             SizedBox(height: 30.h),
