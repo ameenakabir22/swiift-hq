@@ -11,12 +11,13 @@ dependencies:
     sdk: flutter
   lottie: ^2.3.1
   smooth_page_indicator: ^1.0.0
+  firebase: ^9.0.3
+  flutterfire: ^0.0.1
   sizer: ^2.0.15
   flutter_screenutil: ^5.8.4
   flutter_svg: ^1.0.3
   blobs: ^2.0.0
-  firebase: ^9.0.3
-  flutterfire: ^0.0.1
+  
 
 dev_dependencies:
   flutter_test:
