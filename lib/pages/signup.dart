@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:swiift/components/my_button_signup.dart';
 import 'package:swiift/components/square_tile.dart';
 import 'package:swiift/pages/login.dart';
 import 'package:swiift/components/my_button.dart';
@@ -13,6 +14,10 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String fullNameError = '';
+  String emailError = '';
+  String passwordError = '';
+  String phoneError = '';
   // Define the regular expression pattern
 
   final fullNameController = TextEditingController();
@@ -21,40 +26,60 @@ class _SignUpState extends State<SignUp> {
   final phoneController = TextEditingController();
 
   String? signUpUser() {
+    // Regular expression pattern for email validation
+    final emailPattern = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+
+// Regular expression pattern for phone number validation
+    final phonePattern = RegExp(r'^[0-9]{10}$');
+
     String fullName = fullNameController.text.trim();
     String email = emailController.text.trim();
     String password = passwordController.text;
     String phoneNumber = phoneController.text.trim();
 
+    // Validation
     if (fullName.isEmpty) {
-      return 'Please enter your full name';
+      setState(() {
+        fullNameError = 'Please enter your full name';
+      });
+      return null;
     }
 
-    // Email validation using a regular expression
-    // This pattern checks for a basic email format but may not cover all edge cases
-    // You can use a more comprehensive pattern based on your requirements
-    RegExp emailPattern = RegExp(
-      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-      caseSensitive: false,
-      multiLine: false,
-    );
-    if (!emailPattern.hasMatch(email)) {
-      return 'Please enter a valid email';
+    if (email.isEmpty) {
+      setState(() {
+        emailError = 'Please enter your email';
+      });
+      return null;
+    } else if (!emailPattern.hasMatch(email)) {
+      setState(() {
+        emailError = 'Please enter a valid email address';
+      });
+      return null;
     }
 
-    // Password validation (minimum 8 characters)
-    if (password.length < 8) {
-      return 'Password must be at least 8 characters long';
+    if (password.isEmpty) {
+      setState(() {
+        passwordError = 'Please enter a password';
+      });
+      return null;
     }
 
-    // Phone number validation (basic format check)
-    RegExp phonePattern = RegExp(r'^[0-9]{10}$');
-    if (!phonePattern.hasMatch(phoneNumber)) {
-      return 'Please enter a valid phone number';
+    if (phoneNumber.isEmpty) {
+      setState(() {
+        phoneError = 'Please enter your phone number';
+      });
+      return null;
+    } else if (!phonePattern.hasMatch(phoneNumber)) {
+      setState(() {
+        phoneError = 'Please enter a valid phone number';
+      });
+      return null;
     }
 
-    // If all validations pass, return null
-    return null;
+    // Add more validation rules as needed...
+
+    // If all validations pass, proceed with sign up
+    // Perform sign-up operation using provided details
   }
 
   @override
@@ -140,9 +165,7 @@ class _SignUpState extends State<SignUp> {
             ),
             SizedBox(height: 30.h),
             // Sign up button
-            MyButton(
-              onTap: signUpUser, // Pass function reference without parentheses
-            ),
+            MyButtonSignUp(onTap: signUpUser),
             SizedBox(height: 50),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
