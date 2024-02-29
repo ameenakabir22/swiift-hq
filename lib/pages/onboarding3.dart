@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/signup.dart';
 
@@ -15,7 +14,11 @@ class Onboarding3 extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 60.h),
-                child: Lottie.asset('assets/money.json'),
+                child: Image.asset(
+                  'assets/moneyblack.png',
+                  height: 300.h,
+                  width: 300.w,
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 15.h, left: 30.w, right: 30.w),

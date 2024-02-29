@@ -41,6 +41,9 @@ flutter:
      - assets/apple.png
      - assets/loginbackground.jpg
      - assets/blob.svg
+     - assets/goodsblack.svg
+     - assets/blackmotorcycle.svg
+     - assets/moneyblack.png
 
      
   fonts:

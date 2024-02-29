@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:swiift/pages/login.dart';
 import 'package:swiift/pages/onboarding2.dart';
 
@@ -33,8 +34,8 @@ class _OnboardingState extends State<Onboarding> {
           ),
           Transform.translate(
             offset: Offset(-10.0, -20.h),
-            child: Image.asset(
-              'assets/onboardingimg.jpeg',
+            child: SvgPicture.asset(
+              'assets/blackmotorcycle.svg',
             ),
           ),
         ],

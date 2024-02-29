@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/onboarding3.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Onboarding2 extends StatelessWidget {
   @override
@@ -15,8 +15,8 @@ class Onboarding2 extends StatelessWidget {
             // Lottie animation
             Padding(
               padding: EdgeInsets.only(left: 10.w),
-              child: Lottie.asset(
-                'assets/delivery.json',
+              child: SvgPicture.asset(
+                'assets/goodsblack.svg',
               ),
             ),
             // Use Padding widget individually for each text
