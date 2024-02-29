@@ -12,7 +12,7 @@ class SignUpOptions extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.only(right: 250.w, top: 20.h),
+            padding: EdgeInsets.only(right: 300.w, top: 20.h),
             child: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_new_rounded,
