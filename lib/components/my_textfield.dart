@@ -5,12 +5,14 @@ class MyTextField extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
+  final ValueChanged<String>? onChanged; // Define onChanged callback
 
   const MyTextField({
     Key? key,
     this.controller,
     required this.hintText,
     required this.obscureText,
+    this.onChanged, // Add onChanged parameter
   }) : super(key: key);
 
   @override
