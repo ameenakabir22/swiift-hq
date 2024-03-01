@@ -57,8 +57,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
           ),
+          // positioned widget for the skip text button
+          Positioned(
+            top: 20.h,
+            right: 20.w,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpOptions()),
+                );
+              },
+              child: Text(
+                'Skip',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ),
 
-          // Positioned widget for UI elements
+          // Positioned widget for the material button
           Positioned(
             bottom: 30.h,
             right: 20.w,
