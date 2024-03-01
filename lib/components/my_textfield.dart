@@ -37,6 +37,9 @@ class MyTextField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             obscureText: obscureText,
+            onChanged: onChanged != null
+                ? (value) => onChanged!(value)
+                : null, // Call onChanged callback if not null
             decoration: InputDecoration(
               hintText: hintText,
               border: InputBorder.none,

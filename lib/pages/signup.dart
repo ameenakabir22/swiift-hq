@@ -39,14 +39,14 @@ class _SignUpState extends State<SignUp> {
     });
   }
 
-// Method to handle password text field changes and clear error message
+  // Method to handle password text field changes and clear error message
   void handlePasswordChange(String value) {
     setState(() {
       passwordError = ''; // Clear error message
     });
   }
 
-// Method to handle phone number text field changes and clear error message
+  // Method to handle phone number text field changes and clear error message
   void handlePhoneChange(String value) {
     setState(() {
       phoneError = ''; // Clear error message
@@ -164,9 +164,10 @@ class _SignUpState extends State<SignUp> {
             Text(
               'Sign Up',
               style: TextStyle(
-                  fontFamily: 'Poppins-Bold',
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.w600),
+                fontFamily: 'Poppins-Bold',
+                fontSize: 30.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
 
             SizedBox(
@@ -196,7 +197,7 @@ class _SignUpState extends State<SignUp> {
                   onChanged: (value) {
                     setState(() {
                       handleTextFieldChange(value, fullNameError);
-                      ; // Clear error message
+                      // Clear error message
                     });
                   },
                 ),
@@ -222,7 +223,7 @@ class _SignUpState extends State<SignUp> {
                   onChanged: (value) {
                     setState(() {
                       handleTextFieldChange(value, emailError);
-                      ; // Clear error message
+                      // Clear error message
                     });
                   },
                 ),
@@ -248,7 +249,7 @@ class _SignUpState extends State<SignUp> {
                   onChanged: (value) {
                     setState(() {
                       handleTextFieldChange(value, passwordError);
-                      ; // Clear error message
+                      // Clear error message
                     });
                   },
                 ),
@@ -273,8 +274,8 @@ class _SignUpState extends State<SignUp> {
                   obscureText: false,
                   onChanged: (value) {
                     setState(() {
-                      handleTextFieldChange(value, fullNameError);
-                      ; // Clear error message
+                      handleTextFieldChange(value, phoneError);
+                      // Clear error message
                     });
                   },
                 ),
