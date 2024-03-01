@@ -20,7 +20,7 @@ class _OnboardingState extends State<Onboarding> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.all(21.w),
+            padding: EdgeInsets.all(20.w),
             child: Padding(
               padding: EdgeInsets.only(left: 10.w),
               child: Text(
