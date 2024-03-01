@@ -205,6 +205,9 @@ class _SignUpState extends State<SignUp> {
                   ),
               ],
             ),
+            SizedBox(
+              height: 15.h,
+            ),
 
             // Email field with error message
             Column(
@@ -228,7 +231,9 @@ class _SignUpState extends State<SignUp> {
                   ),
               ],
             ),
-
+            SizedBox(
+              height: 15.h,
+            ),
             // Password field with error message
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,6 +255,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
               ],
+            ),
+            SizedBox(
+              height: 15.h,
             ),
 
             // Phone number field with error message
