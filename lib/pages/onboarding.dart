@@ -34,8 +34,8 @@ class _OnboardingState extends State<Onboarding> {
           ),
           Transform.translate(
             offset: Offset(-10.0, -20.h),
-            child: SvgPicture.asset(
-              'assets/blackmotorcycle.svg',
+            child: Image.asset(
+              'assets/blackmotorcycle.png',
             ),
           ),
         ],
