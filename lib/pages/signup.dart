@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/components/my_button_signup.dart';
+import 'package:swiift/components/my_textfield.dart';
 import 'package:swiift/components/square_tile.dart';
 import 'package:swiift/pages/login.dart';
-import 'package:swiift/components/my_button.dart';
-import 'package:swiift/components/my_textfield.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -14,72 +13,121 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String fullNameError = '';
-  String emailError = '';
-  String passwordError = '';
-  String phoneError = '';
-  // Define the regular expression pattern
-
+  // Define text editing controllers
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final phoneController = TextEditingController();
 
-  String? signUpUser() {
-    // Regular expression pattern for email validation
-    final emailPattern = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  // Define error messages
+  String fullNameError = '';
+  String emailError = '';
+  String passwordError = '';
+  String phoneError = '';
 
-// Regular expression pattern for phone number validation
-    final phonePattern = RegExp(r'^[0-9]{10}$');
+  // Method to handle text field value changes and clear error message
+  void handleTextFieldChange(String value, String error) {
+    setState(() {
+      fullNameError = ''; // Clear error message
+    });
+  }
 
-    String fullName = fullNameController.text.trim();
-    String email = emailController.text.trim();
-    String password = passwordController.text;
-    String phoneNumber = phoneController.text.trim();
+  // Method to handle email text field changes and clear error message
+  void handleEmailChange(String value) {
+    setState(() {
+      emailError = ''; // Clear error message
+    });
+  }
 
+// Method to handle password text field changes and clear error message
+  void handlePasswordChange(String value) {
+    setState(() {
+      passwordError = ''; // Clear error message
+    });
+  }
+
+// Method to handle phone number text field changes and clear error message
+  void handlePhoneChange(String value) {
+    setState(() {
+      phoneError = ''; // Clear error message
+    });
+  }
+
+  // Validate and sign up user
+  void signUpUser() {
     // Validation
-    if (fullName.isEmpty) {
+    if (fullNameController.text.isEmpty) {
       setState(() {
         fullNameError = 'Please enter your full name';
       });
-      return null;
+      return;
+    } else {
+      setState(() {
+        fullNameError = ''; // Clear error message
+      });
     }
 
-    if (email.isEmpty) {
+    // Validate email
+    if (emailController.text.isEmpty) {
       setState(() {
         emailError = 'Please enter your email';
       });
-      return null;
-    } else if (!emailPattern.hasMatch(email)) {
+      return;
+    } else if (!isValidEmail(emailController.text)) {
       setState(() {
         emailError = 'Please enter a valid email address';
       });
-      return null;
+      return;
+    } else {
+      setState(() {
+        emailError = ''; // Clear error message
+      });
     }
 
-    if (password.isEmpty) {
+    // Validate password
+    if (passwordController.text.isEmpty) {
       setState(() {
         passwordError = 'Please enter a password';
       });
-      return null;
+      return;
+    } else {
+      setState(() {
+        passwordError = ''; // Clear error message
+      });
     }
 
-    if (phoneNumber.isEmpty) {
+    // Validate phone number
+    if (phoneController.text.isEmpty) {
       setState(() {
         phoneError = 'Please enter your phone number';
       });
-      return null;
-    } else if (!phonePattern.hasMatch(phoneNumber)) {
+      return;
+    } else if (!isValidPhoneNumber(phoneController.text)) {
       setState(() {
         phoneError = 'Please enter a valid phone number';
       });
-      return null;
+      return;
+    } else {
+      setState(() {
+        phoneError = ''; // Clear error message
+      });
     }
-
-    // Add more validation rules as needed...
 
     // If all validations pass, proceed with sign up
     // Perform sign-up operation using provided details
+    // Your sign-up logic here...
+  }
+
+  // Check if email is valid
+  bool isValidEmail(String email) {
+    final emailPattern = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailPattern.hasMatch(email);
+  }
+
+  // Check if phone number is valid
+  bool isValidPhoneNumber(String phoneNumber) {
+    final phonePattern = RegExp(r'^((\+?234)|0)([789]0|[789]1)([0-9]{8})$');
+    return phonePattern.hasMatch(phoneNumber);
   }
 
   @override
@@ -112,7 +160,7 @@ class _SignUpState extends State<SignUp> {
               height: 10.h,
             ),
 
-            // sign up text
+            // Sign up text
             Text(
               'Sign Up',
               style: TextStyle(
@@ -125,7 +173,7 @@ class _SignUpState extends State<SignUp> {
               height: 30.h,
             ),
 
-            // Sign up text
+            // Create account text
             Text(
               "Create your Account",
               style: TextStyle(
@@ -136,39 +184,123 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             SizedBox(height: 20.h),
-            // Full name field
-            MyTextField(
-              controller: fullNameController,
-              hintText: 'Full Name',
-              obscureText: false,
+
+            // Full name field with error message
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyTextField(
+                  controller: fullNameController,
+                  hintText: 'Full Name',
+                  obscureText: false,
+                  onChanged: (value) {
+                    setState(() {
+                      handleTextFieldChange(value, fullNameError);
+                      ; // Clear error message
+                    });
+                  },
+                ),
+                if (fullNameError.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.only(left: 25.w, top: 5.h, bottom: 5.h),
+                    child: Text(
+                      fullNameError,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+              ],
             ),
-            SizedBox(height: 10.h),
-            // Email field
-            MyTextField(
-              controller: emailController,
-              hintText: 'Email',
-              obscureText: false,
+
+            // Email field with error message
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyTextField(
+                  controller: emailController,
+                  hintText: 'Email',
+                  obscureText: false,
+                  onChanged: (value) {
+                    setState(() {
+                      handleTextFieldChange(value, emailError);
+                      ; // Clear error message
+                    });
+                  },
+                ),
+                if (emailError.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.only(left: 25.w, top: 5.h, bottom: 5.h),
+                    child: Text(
+                      emailError,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+              ],
             ),
-            SizedBox(height: 10.h),
-            // Password field
-            MyTextField(
-              controller: passwordController,
-              hintText: 'Phone Number',
-              obscureText: true,
+
+            // Password field with error message
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyTextField(
+                  controller: passwordController,
+                  hintText: 'Password',
+                  obscureText: true,
+                  onChanged: (value) {
+                    setState(() {
+                      handleTextFieldChange(value, passwordError);
+                      ; // Clear error message
+                    });
+                  },
+                ),
+                if (passwordError.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.only(left: 25.w, top: 5.h, bottom: 5.h),
+                    child: Text(
+                      passwordError,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+              ],
             ),
-            SizedBox(height: 10.h),
-            // Phone number field
-            MyTextField(
-              controller: phoneController,
-              hintText: 'Password',
-              obscureText: false,
+
+            // Phone number field with error message
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MyTextField(
+                  controller: phoneController,
+                  hintText: 'Phone Number',
+                  obscureText: false,
+                  onChanged: (value) {
+                    setState(() {
+                      handleTextFieldChange(value, fullNameError);
+                      ; // Clear error message
+                    });
+                  },
+                ),
+                if (phoneError.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.only(left: 25.w, top: 5.h, bottom: 5.h),
+                    child: Text(
+                      phoneError,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+              ],
             ),
+
             SizedBox(height: 30.h),
+
             // Sign up button
-            MyButtonSignUp(onTap: signUpUser),
-            SizedBox(height: 50),
+            MyButtonSignUp(
+              onTap: signUpUser,
+            ),
+
+            SizedBox(height: 50.h),
+
+            // Or continue with text
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 8.0.w),
               child: Row(
                 children: [
                   Expanded(
@@ -193,28 +325,32 @@ class _SignUpState extends State<SignUp> {
                 ],
               ),
             ),
+
             SizedBox(
               height: 30.h,
             ),
 
-            // google + apple sign in
+            // Google and Apple sign in
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                // google icon
+              children: [
+                // Google icon
                 SquareTile(imagePath: 'assets/google.png'),
                 SizedBox(
-                  width: 25,
+                  width: 25.w,
                 ),
-                //apple icon
+                // Apple icon
                 SquareTile(
                   imagePath: 'assets/apple.png',
                 ),
               ],
             ),
+
             SizedBox(
               height: 35.h,
             ),
+
+            // Log in text
             GestureDetector(
               onTap: () {
                 // Navigate to the login page when the "Log In" text is pressed
@@ -236,13 +372,13 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
             ),
-            // blob 2
           ],
         ),
       ),
     );
   }
 
+  // Navigate to login page transition
   Route _createRouteForLogin() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => LogIn(),
