@@ -5,21 +5,72 @@ import 'package:swiift/components/my_textfield.dart';
 import 'package:swiift/components/square_tile.dart';
 import 'package:swiift/pages/signup.dart';
 
-class LogIn extends StatelessWidget {
+class LogIn extends StatefulWidget {
   LogIn({Key? key}) : super(key: key);
 
-  // text editing controller
+  @override
+  _LogInState createState() => _LogInState();
+}
+
+class _LogInState extends State<LogIn> {
+  // Text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {
-    // Implement sign in functionality here
-    // For example:
-    String email = emailController.text;
-    String password = passwordController.text;
+  // Error messages
+  String emailError = '';
+  String passwordError = '';
 
-    // Perform sign in operation using email and password
+  void handleTextFieldChange(String value, String error, String field) {
+    setState(() {
+      if (field == 'email') {
+        emailError = ''; // Clear error message
+      } else if (field == 'password') {
+        passwordError = ''; // Clear error message
+      }
+    });
+  }
+
+  // Validate and sign in user
+  void signInUser() {
+    // Validate email
+    if (emailController.text.isEmpty) {
+      setState(() {
+        emailError = 'Please enter your email';
+      });
+      return;
+    } else if (!isValidEmail(emailController.text)) {
+      setState(() {
+        emailError = 'Please enter a valid email address';
+      });
+      return;
+    } else {
+      setState(() {
+        emailError = ''; // Clear error message
+      });
+    }
+
+    // Validate password
+    if (passwordController.text.isEmpty) {
+      setState(() {
+        passwordError = 'Please enter your password';
+      });
+      return;
+    } else if (passwordController.text.length < 8) {
+      setState(() {
+        passwordError = 'Password must be at least 8 characters long';
+      });
+      return;
+    } else {
+      setState(() {
+        passwordError = ''; // Clear error message
+      });
+    }
+  }
+
+  bool isValidEmail(String email) {
+    final emailPattern = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailPattern.hasMatch(email);
   }
 
   @override
@@ -31,7 +82,7 @@ class LogIn extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // back button
+            // Back button
             Transform.translate(
               offset: Offset(-150.w, 10.h),
               child: IconButton(
@@ -45,7 +96,7 @@ class LogIn extends StatelessWidget {
                 },
               ),
             ),
-            // logo
+            // Logo
             Transform.translate(
               offset: Offset(0.0, -30.h),
               child: Center(
@@ -58,9 +109,9 @@ class LogIn extends StatelessWidget {
                   ),
                 ),
               ),
-            ), // Added comma here
+            ),
 
-            // log in text
+            // Log in text
             Transform.translate(
               offset: Offset(0.0, -60.h),
               child: Text(
@@ -75,29 +126,63 @@ class LogIn extends StatelessWidget {
             ),
             SizedBox(height: 25.h),
 
-            // email
+            // Email field with error message
             Transform.translate(
               offset: Offset(0.0, -70.h),
-              child: MyTextField(
-                controller: emailController,
-                hintText: 'Email',
-                obscureText: false,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MyTextField(
+                    controller: emailController,
+                    hintText: 'Email',
+                    obscureText: false,
+                    onChanged: (value) {
+                      handleTextFieldChange(value, emailError, 'email');
+                    },
+                  ),
+                  if (emailError.isNotEmpty)
+                    Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.w, top: 5.h, bottom: 5.h),
+                      child: Text(
+                        emailError,
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                ],
               ),
             ),
             SizedBox(height: 15.h),
 
-            // password
+            // Password field with error message
             Transform.translate(
               offset: Offset(0.0, -70.h),
-              child: MyTextField(
-                controller: passwordController,
-                hintText: 'Password',
-                obscureText: true,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MyTextField(
+                    controller: passwordController,
+                    hintText: 'Password',
+                    obscureText: true,
+                    onChanged: (value) {
+                      handleTextFieldChange(value, passwordError, 'password');
+                    },
+                  ),
+                  if (passwordError.isNotEmpty)
+                    Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.w, top: 5.h, bottom: 5.h),
+                      child: Text(
+                        passwordError,
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                ],
               ),
             ),
             SizedBox(height: 10.h),
 
-            // forgot password
+            // Forgot password text
             Transform.translate(
               offset: Offset(0.0, -60.h),
               child: Padding(
@@ -113,22 +198,18 @@ class LogIn extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            // sign in button
+            SizedBox(height: 10.h),
+
+            // Sign in button
             Transform.translate(
               offset: Offset(0.0, -50.h),
               child: MyButton(
-                onTap:
-                    signUserIn, // Pass function reference without parentheses
+                onTap: signInUser,
               ),
             ),
-            SizedBox(
-              height: 50.h,
-            ),
+            SizedBox(height: 50.h),
 
-            // or you can continue with
+            // Or continue with text
             Transform.translate(
               offset: Offset(0.0, -50.h),
               child: Padding(
@@ -158,35 +239,32 @@ class LogIn extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 5.h,
-            ),
+            SizedBox(height: 5.h),
 
-            // google + apple sign in
+            // Google and Apple sign in
             Transform.translate(
               offset: Offset(0.0, -15.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  // google icon
+                  // Google icon
                   SquareTile(imagePath: 'assets/google.png'),
                   SizedBox(
                     width: 25,
                   ),
-                  //apple icon
+                  // Apple icon
                   SquareTile(
                     imagePath: 'assets/apple.png',
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 20.h,
-            ),
-            // Dont have an account ?
+            SizedBox(height: 20.h),
+
+            // Don't have an account text
             GestureDetector(
               onTap: () {
-                // Navigate to the sign up page when the "Sign up" text is pressed
+                // Navigate to the sign up page when the "Sign Up" text is pressed
                 Navigator.of(context).push(_createRoute2());
               },
               child: RichText(
@@ -210,22 +288,24 @@ class LogIn extends StatelessWidget {
       ),
     );
   }
-}
 
-Route _createRoute2() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => SignUp(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0); // Start from bottom
-      const end = Offset.zero;
-      const curve = Curves.easeInOut;
+  // Navigate to sign up page transition
+  Route _createRoute2() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => SignUp(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0); // Start from bottom
+        const end = Offset.zero;
+        const curve = Curves.easeInOut;
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
 }

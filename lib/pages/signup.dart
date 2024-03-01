@@ -26,30 +26,22 @@ class _SignUpState extends State<SignUp> {
   String phoneError = '';
 
   // Method to handle text field value changes and clear error message
-  void handleTextFieldChange(String value, String error) {
+  void handleTextFieldChange(String value, String error, String field) {
     setState(() {
-      fullNameError = ''; // Clear error message
-    });
-  }
-
-  // Method to handle email text field changes and clear error message
-  void handleEmailChange(String value) {
-    setState(() {
-      emailError = ''; // Clear error message
-    });
-  }
-
-  // Method to handle password text field changes and clear error message
-  void handlePasswordChange(String value) {
-    setState(() {
-      passwordError = ''; // Clear error message
-    });
-  }
-
-  // Method to handle phone number text field changes and clear error message
-  void handlePhoneChange(String value) {
-    setState(() {
-      phoneError = ''; // Clear error message
+      switch (field) {
+        case 'full_name':
+          fullNameError = ''; // Clear error message
+          break;
+        case 'email':
+          emailError = ''; // Clear error message
+          break;
+        case 'password':
+          passwordError = ''; // Clear error message
+          break;
+        case 'phone':
+          phoneError = ''; // Clear error message
+          break;
+      }
     });
   }
 
@@ -88,6 +80,11 @@ class _SignUpState extends State<SignUp> {
     if (passwordController.text.isEmpty) {
       setState(() {
         passwordError = 'Please enter a password';
+      });
+      return;
+    } else if (passwordController.text.length < 8) {
+      setState(() {
+        passwordError = 'Password must be at least 8 characters long';
       });
       return;
     } else {
@@ -195,10 +192,7 @@ class _SignUpState extends State<SignUp> {
                   hintText: 'Full Name',
                   obscureText: false,
                   onChanged: (value) {
-                    setState(() {
-                      handleTextFieldChange(value, fullNameError);
-                      // Clear error message
-                    });
+                    handleTextFieldChange(value, fullNameError, 'full_name');
                   },
                 ),
                 if (fullNameError.isNotEmpty)
@@ -221,10 +215,7 @@ class _SignUpState extends State<SignUp> {
                   hintText: 'Email',
                   obscureText: false,
                   onChanged: (value) {
-                    setState(() {
-                      handleTextFieldChange(value, emailError);
-                      // Clear error message
-                    });
+                    handleTextFieldChange(value, emailError, 'email');
                   },
                 ),
                 if (emailError.isNotEmpty)
@@ -247,10 +238,7 @@ class _SignUpState extends State<SignUp> {
                   hintText: 'Password',
                   obscureText: true,
                   onChanged: (value) {
-                    setState(() {
-                      handleTextFieldChange(value, passwordError);
-                      // Clear error message
-                    });
+                    handleTextFieldChange(value, passwordError, 'password');
                   },
                 ),
                 if (passwordError.isNotEmpty)
@@ -273,10 +261,7 @@ class _SignUpState extends State<SignUp> {
                   hintText: 'Phone Number',
                   obscureText: false,
                   onChanged: (value) {
-                    setState(() {
-                      handleTextFieldChange(value, phoneError);
-                      // Clear error message
-                    });
+                    handleTextFieldChange(value, phoneError, 'phone');
                   },
                 ),
                 if (phoneError.isNotEmpty)
