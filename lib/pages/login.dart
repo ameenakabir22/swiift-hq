@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/components/my_button.dart';
@@ -14,8 +16,8 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   // Text editing controllers
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   // Error messages
   String emailError = '';
@@ -34,12 +36,12 @@ class _LogInState extends State<LogIn> {
   // Validate and sign in user
   void signInUser() {
     // Validate email
-    if (emailController.text.isEmpty) {
+    if (_emailController.text.isEmpty) {
       setState(() {
         emailError = 'Please enter your email';
       });
       return;
-    } else if (!isValidEmail(emailController.text)) {
+    } else if (!isValidEmail(_emailController.text)) {
       setState(() {
         emailError = 'Please enter a valid email address';
       });
@@ -51,12 +53,12 @@ class _LogInState extends State<LogIn> {
     }
 
     // Validate password
-    if (passwordController.text.isEmpty) {
+    if (_passwordController.text.isEmpty) {
       setState(() {
         passwordError = 'Please enter your password';
       });
       return;
-    } else if (passwordController.text.length < 8) {
+    } else if (_passwordController.text.length < 8) {
       setState(() {
         passwordError = 'Password must be at least 8 characters long';
       });
@@ -71,6 +73,18 @@ class _LogInState extends State<LogIn> {
   bool isValidEmail(String email) {
     final emailPattern = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     return emailPattern.hasMatch(email);
+  }
+
+  Future logIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
+
+  @override
+  void Dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
   }
 
   @override
@@ -133,7 +147,7 @@ class _LogInState extends State<LogIn> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyTextField(
-                    controller: emailController,
+                    controller: _emailController,
                     hintText: 'Email',
                     obscureText: false,
                     onChanged: (value) {
@@ -161,7 +175,7 @@ class _LogInState extends State<LogIn> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyTextField(
-                    controller: passwordController,
+                    controller: _passwordController,
                     hintText: 'Password',
                     obscureText: true,
                     onChanged: (value) {
