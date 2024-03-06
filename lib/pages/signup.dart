@@ -4,7 +4,6 @@ import 'package:swiift/components/my_button_signup.dart';
 import 'package:swiift/components/my_textfield.dart';
 import 'package:swiift/components/square_tile.dart';
 import 'package:swiift/pages/login.dart';
-import 'package:swiift/pages/main_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -376,7 +375,7 @@ class _SignUpState extends State<SignUp> {
   // Navigate to login page transition
   Route _createRouteForLogin() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => MainPage(),
+      pageBuilder: (context, animation, secondaryAnimation) => LogIn(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0); // Start from bottom
         const end = Offset.zero;
