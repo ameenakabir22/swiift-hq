@@ -127,7 +127,7 @@ class _LogInState extends State<LogIn> {
 
             // Log in text
             Transform.translate(
-              offset: Offset(0.0, -50.h),
+              offset: Offset(0.0, -60.h),
               child: Text(
                 "Welcome back, you've been missed",
                 style: TextStyle(
