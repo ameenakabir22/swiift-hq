@@ -6,8 +6,6 @@ import 'package:swiift/pages/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart'; // Import Firebase Core
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Initialize Firebase
   runApp(Swiift());
 }
 
