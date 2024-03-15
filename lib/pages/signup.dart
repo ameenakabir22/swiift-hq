@@ -290,7 +290,7 @@ class _SignUpState extends State<SignUp> {
               onTap: signUpUser,
             ),
 
-            SizedBox(height: 50.h),
+            SizedBox(height: 40.h),
 
             // Or continue with text
             Padding(
@@ -321,7 +321,7 @@ class _SignUpState extends State<SignUp> {
             ),
 
             SizedBox(
-              height: 30.h,
+              height: 20.h,
             ),
 
             // Google and Apple sign in
@@ -341,7 +341,7 @@ class _SignUpState extends State<SignUp> {
             ),
 
             SizedBox(
-              height: 35.h,
+              height: 20.h,
             ),
 
             // Log in text
