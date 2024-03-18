@@ -24,7 +24,6 @@ class Swiift extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
-          title: 'Your App Title',
           initialRoute: '/login',
           routes: {
             '/login': (context) => LogIn(),
