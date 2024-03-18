@@ -34,18 +34,18 @@ class _LogInState extends State<LogIn> {
   }
 
   // Validate and sign in user
-  void signInUser() {
+  bool formValidation() {
     // Validate email
     if (_emailController.text.isEmpty) {
       setState(() {
         emailError = 'Please enter your email';
       });
-      return;
+      return false;
     } else if (!isValidEmail(_emailController.text)) {
       setState(() {
         emailError = 'Please enter a valid email address';
       });
-      return;
+      return false;
     } else {
       setState(() {
         emailError = ''; // Clear error message
@@ -57,22 +57,46 @@ class _LogInState extends State<LogIn> {
       setState(() {
         passwordError = 'Please enter your password';
       });
-      return;
+      return false;
     } else if (_passwordController.text.length < 8) {
       setState(() {
         passwordError = 'Password must be at least 8 characters long';
       });
-      return;
+      return false;
     } else {
       setState(() {
         passwordError = ''; // Clear error message
       });
     }
+
+    // Return true if all validations pass
+    return true;
   }
 
   bool isValidEmail(String email) {
     final emailPattern = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     return emailPattern.hasMatch(email);
+  }
+
+  void signInUser(BuildContext context) async {
+    if (!formValidation()) {
+      return;
+    }
+
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      // Navigate to the home screen or another screen upon successful login
+      Navigator.pushReplacementNamed(context, '/home');
+    } catch (e) {
+      // Handle login errors and display appropriate error messages to the user
+      String errorMessage = 'Error signing in: $e';
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(errorMessage)));
+    }
   }
 
   @override
@@ -205,9 +229,9 @@ class _LogInState extends State<LogIn> {
             // Sign in button
             Transform.translate(
               offset: Offset(0.0, -50.h),
-              child: MyButton(
-                onTap: signInUser,
-              ),
+              child: MyButton(onTap: () {
+                signInUser(context);
+              }),
             ),
             SizedBox(height: 50.h),
 
