@@ -22,6 +22,8 @@ dependencies:
   firebase_messaging: ^14.3.0
   firebase_auth: ^4.3.0
   firebase_core: ^2.8.0
+  cloud_functions: ^4.0.13
+  firebase_storage: ^11.0.16
   
 
 dev_dependencies:
