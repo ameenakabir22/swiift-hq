@@ -4,12 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/homepage.dart';
 import 'package:swiift/pages/login.dart';
 import 'package:swiift/pages/signup.dart';
-import 'package:swiift/pages/splashscreen.dart';
-import 'package:swiift/pages/homepage.dart'; // Import the home screen file
+import 'package:swiift/pages/splashscreen.dart'; // Import the home screen file
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    print('Error initializing Firebase: $e');
+  }
   runApp(Swiift());
 }
 
