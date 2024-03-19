@@ -16,8 +16,8 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   // Text editing controllers
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   // Error messages
   String emailError = '';
@@ -36,12 +36,12 @@ class _LogInState extends State<LogIn> {
   // Validate and sign in user
   bool formValidation() {
     // Validate email
-    if (_emailController.text.isEmpty) {
+    if (emailController.text.isEmpty) {
       setState(() {
         emailError = 'Please enter your email';
       });
       return false;
-    } else if (!isValidEmail(_emailController.text)) {
+    } else if (!isValidEmail(emailController.text)) {
       setState(() {
         emailError = 'Please enter a valid email address';
       });
@@ -53,12 +53,12 @@ class _LogInState extends State<LogIn> {
     }
 
     // Validate password
-    if (_passwordController.text.isEmpty) {
+    if (passwordController.text.isEmpty) {
       setState(() {
         passwordError = 'Please enter your password';
       });
       return false;
-    } else if (_passwordController.text.length < 8) {
+    } else if (passwordController.text.length < 8) {
       setState(() {
         passwordError = 'Password must be at least 8 characters long';
       });
@@ -78,25 +78,9 @@ class _LogInState extends State<LogIn> {
     return emailPattern.hasMatch(email);
   }
 
-  void signInUser(BuildContext context) async {
-    if (!formValidation()) {
-      return;
-    }
-
-    try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      // Navigate to the home screen or another screen upon successful login
-      Navigator.pushReplacementNamed(context, '/home');
-    } catch (e) {
-      // Handle login errors and display appropriate error messages to the user
-      String errorMessage = 'Error signing in: $e';
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(errorMessage)));
-    }
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
   }
 
   @override
@@ -159,7 +143,7 @@ class _LogInState extends State<LogIn> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyTextField(
-                    controller: _emailController,
+                    controller: emailController,
                     hintText: 'Email',
                     obscureText: false,
                     onChanged: (value) {
@@ -187,7 +171,7 @@ class _LogInState extends State<LogIn> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MyTextField(
-                    controller: _passwordController,
+                    controller: passwordController,
                     hintText: 'Password',
                     obscureText: true,
                     onChanged: (value) {
@@ -229,9 +213,7 @@ class _LogInState extends State<LogIn> {
             // Sign in button
             Transform.translate(
               offset: Offset(0.0, -50.h),
-              child: MyButton(onTap: () {
-                signInUser(context);
-              }),
+              child: MyButton(onTap: () {}),
             ),
             SizedBox(height: 50.h),
 
