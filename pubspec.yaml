@@ -24,6 +24,9 @@ dependencies:
   firebase_core: ^2.8.0
   cloud_functions: ^4.0.13
   firebase_storage: ^11.0.16
+  firebase_database: ^10.0.16
+  firebase_app_check: ^0.1.1
+  cloud_firestore: ^4.4.5
   
 
 dev_dependencies:
