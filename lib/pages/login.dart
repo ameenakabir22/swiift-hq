@@ -82,21 +82,38 @@ class _LogInState extends State<LogIn> {
     // Perform form validation
     if (formValidation()) {
       try {
-        print('Attempting to sign in...'); // Debug print
         // If validation passes, sign in the user
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
-        print('Sign in successful!'); // Debug print
         // Navigate to HomePage after successful sign-in
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );
       } catch (e) {
-        // Handle sign-in errors, such as invalid credentials
-        print('Error signing in: $e');
+        // Handle sign-in errors
+        String errorMessage = ''; // Initialize error message
+
+        if (e is FirebaseAuthException) {
+          // Handle specific error codes
+          switch (e.code) {
+            case 'user-not-found':
+              errorMessage = 'No user found with this email.';
+              break;
+            case 'wrong-password':
+              errorMessage = 'Incorrect email or password.';
+              break;
+          }
+        }
+
+        // Show error message to the user if errorMessage is not empty
+        if (errorMessage.isNotEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(errorMessage)),
+          );
+        }
       }
     }
   }
