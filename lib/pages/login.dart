@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/components/my_button.dart';
 import 'package:swiift/components/my_textfield.dart';
 import 'package:swiift/components/square_tile.dart';
+import 'package:swiift/pages/homepage.dart';
 import 'package:swiift/pages/signup.dart';
 
 class LogIn extends StatefulWidget {
@@ -77,14 +78,21 @@ class _LogInState extends State<LogIn> {
     return emailPattern.hasMatch(email);
   }
 
-  void signUserIn() async {
+  void signUserIn(BuildContext context) async {
     // Perform form validation
     if (formValidation()) {
       try {
+        print('Attempting to sign in...'); // Debug print
         // If validation passes, sign in the user
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
+        );
+        print('Sign in successful!'); // Debug print
+        // Navigate to HomePage after successful sign-in
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
         );
       } catch (e) {
         // Handle sign-in errors, such as invalid credentials
@@ -224,7 +232,7 @@ class _LogInState extends State<LogIn> {
             Transform.translate(
               offset: Offset(0.0, -50.h),
               child: MyButton(onTap: () {
-                signUserIn();
+                signUserIn(context);
               }),
             ),
             SizedBox(height: 50.h),
