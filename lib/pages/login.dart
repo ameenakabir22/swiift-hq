@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/components/my_button.dart';
@@ -79,8 +78,19 @@ class _LogInState extends State<LogIn> {
   }
 
   void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
+    // Perform form validation
+    if (formValidation()) {
+      try {
+        // If validation passes, sign in the user
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } catch (e) {
+        // Handle sign-in errors, such as invalid credentials
+        print('Error signing in: $e');
+      }
+    }
   }
 
   @override
@@ -213,7 +223,9 @@ class _LogInState extends State<LogIn> {
             // Sign in button
             Transform.translate(
               offset: Offset(0.0, -50.h),
-              child: MyButton(onTap: () {}),
+              child: MyButton(onTap: () {
+                signUserIn();
+              }),
             ),
             SizedBox(height: 50.h),
 
@@ -267,7 +279,7 @@ class _LogInState extends State<LogIn> {
                 ],
               ),
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 15.h),
 
             // Don't have an account text
             GestureDetector(
