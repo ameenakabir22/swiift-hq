@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:swiift/pages/login.dart';
-import 'package:swiift/pages/signup.dart';
+import 'package:swiift/firebase_options.dart';
 import 'package:swiift/pages/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-// Import Firebase Core
 
 void main() async {
+  // Ensure that Flutter binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+  try {
+    // Initialize Firebase
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+    print('Firebase initialized successfully');
+  } catch (e) {
+    // Print any errors that occur during initialization
+    print('Error initializing Firebase: $e');
+  }
+
+  // Run the app
   runApp(Swiift());
 }
 

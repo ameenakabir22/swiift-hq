@@ -3,8 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swiift/pages/homepage.dart';
 import 'package:swiift/pages/login.dart';
-import 'package:swiift/pages/signup.dart';
-import 'package:swiift/pages/splashscreen.dart'; // Import the home screen file
+import 'package:swiift/pages/signup.dart'; // Import the home screen file
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
