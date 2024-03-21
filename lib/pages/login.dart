@@ -15,62 +15,46 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  // Text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // Error messages
   String emailError = '';
   String passwordError = '';
 
   void handleTextFieldChange(String value, String error, String field) {
     setState(() {
       if (field == 'email') {
-        emailError = ''; // Clear error message
+        emailError = error;
       } else if (field == 'password') {
-        passwordError = ''; // Clear error message
+        passwordError = error;
       }
     });
   }
 
-  // Validate and sign in user
   bool formValidation() {
-    // Validate email
+    bool isValid = true;
+
     if (emailController.text.isEmpty) {
-      setState(() {
-        emailError = 'Please enter your email';
-      });
-      return false;
+      emailError = 'Please enter your email';
+      isValid = false;
     } else if (!isValidEmail(emailController.text)) {
-      setState(() {
-        emailError = 'Please enter a valid email address';
-      });
-      return false;
+      emailError = 'Please enter a valid email address';
+      isValid = false;
     } else {
-      setState(() {
-        emailError = ''; // Clear error message
-      });
+      emailError = '';
     }
 
-    // Validate password
     if (passwordController.text.isEmpty) {
-      setState(() {
-        passwordError = 'Please enter your password';
-      });
-      return false;
+      passwordError = 'Please enter your password';
+      isValid = false;
     } else if (passwordController.text.length < 8) {
-      setState(() {
-        passwordError = 'Password must be at least 8 characters long';
-      });
-      return false;
+      passwordError = 'Password must be at least 8 characters long';
+      isValid = false;
     } else {
-      setState(() {
-        passwordError = ''; // Clear error message
-      });
+      passwordError = '';
     }
 
-    // Return true if all validations pass
-    return true;
+    return isValid;
   }
 
   bool isValidEmail(String email) {
@@ -79,25 +63,20 @@ class _LogInState extends State<LogIn> {
   }
 
   void signUserIn(BuildContext context) async {
-    // Perform form validation
     if (formValidation()) {
       try {
-        // If validation passes, sign in the user
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
-        // Navigate to HomePage after successful sign-in
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );
       } catch (e) {
-        // Handle sign-in errors
-        String errorMessage = ''; // Initialize error message
+        String errorMessage = '';
 
         if (e is FirebaseAuthException) {
-          // Handle specific error codes
           switch (e.code) {
             case 'user-not-found':
               errorMessage = 'No user found with this email.';
@@ -105,10 +84,14 @@ class _LogInState extends State<LogIn> {
             case 'wrong-password':
               errorMessage = 'Incorrect email or password.';
               break;
+            default:
+              errorMessage = 'An error occurred. Please try again later.';
+              break;
           }
+        } else {
+          errorMessage = 'An error occurred. Please try again later.';
         }
 
-        // Show error message to the user if errorMessage is not empty
         if (errorMessage.isNotEmpty) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(errorMessage)),
@@ -127,7 +110,6 @@ class _LogInState extends State<LogIn> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // Back button
             Transform.translate(
               offset: Offset(-150.w, 10.h),
               child: IconButton(
@@ -136,12 +118,10 @@ class _LogInState extends State<LogIn> {
                   color: Colors.black,
                 ),
                 onPressed: () {
-                  // Navigate back to the previous page when the back arrow is pressed
                   Navigator.pop(context);
                 },
               ),
             ),
-            // Logo
             Transform.translate(
               offset: Offset(0.0, -30.h),
               child: Center(
@@ -155,8 +135,6 @@ class _LogInState extends State<LogIn> {
                 ),
               ),
             ),
-
-            // Log in text
             Transform.translate(
               offset: Offset(0.0, -60.h),
               child: Text(
@@ -170,8 +148,6 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             SizedBox(height: 25.h),
-
-            // Email field with error message
             Transform.translate(
               offset: Offset(0.0, -70.h),
               child: Column(
@@ -198,8 +174,6 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             SizedBox(height: 15.h),
-
-            // Password field with error message
             Transform.translate(
               offset: Offset(0.0, -70.h),
               child: Column(
@@ -226,8 +200,6 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             SizedBox(height: 10.h),
-
-            // Forgot password text
             Transform.translate(
               offset: Offset(0.0, -60.h),
               child: Padding(
@@ -244,8 +216,6 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             SizedBox(height: 10.h),
-
-            // Sign in button
             Transform.translate(
               offset: Offset(0.0, -50.h),
               child: MyButton(onTap: () {
@@ -253,8 +223,6 @@ class _LogInState extends State<LogIn> {
               }),
             ),
             SizedBox(height: 50.h),
-
-            // Or continue with text
             Transform.translate(
               offset: Offset(0.0, -50.h),
               child: Padding(
@@ -285,19 +253,15 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             SizedBox(height: 5.h),
-
-            // Google and Apple sign in
             Transform.translate(
               offset: Offset(0.0, -15.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  // Google icon
                   SquareTile(imagePath: 'assets/google.png'),
                   SizedBox(
                     width: 25,
                   ),
-                  // Apple icon
                   SquareTile(
                     imagePath: 'assets/apple.png',
                   ),
@@ -305,11 +269,8 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             SizedBox(height: 15.h),
-
-            // Don't have an account text
             GestureDetector(
               onTap: () {
-                // Navigate to the sign up page when the "Sign Up" text is pressed
                 Navigator.of(context).push(_createRoute2());
               },
               child: RichText(
@@ -320,7 +281,7 @@ class _LogInState extends State<LogIn> {
                     TextSpan(
                       text: 'Sign Up',
                       style: TextStyle(
-                        color: Colors.black, // Match the button color
+                        color: Colors.black,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -334,12 +295,11 @@ class _LogInState extends State<LogIn> {
     );
   }
 
-  // Navigate to sign up page transition
   Route _createRoute2() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => SignUp(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0); // Start from bottom
+        const begin = Offset(0.0, 1.0);
         const end = Offset.zero;
         const curve = Curves.easeInOut;
 
