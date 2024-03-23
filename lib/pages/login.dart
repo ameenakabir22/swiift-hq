@@ -92,11 +92,9 @@ class _LogInState extends State<LogIn> {
           errorMessage = 'An error occurred. Please try again later.';
         }
 
-        if (errorMessage.isNotEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(errorMessage)),
-          );
-        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(errorMessage)),
+        );
       }
     }
   }
