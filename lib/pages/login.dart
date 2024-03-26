@@ -73,7 +73,9 @@ class _LogInState extends State<LogIn> {
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );
-      } catch (e) {
+      } on FirebaseAuthException catch (e) {
+        print('Firebase Error: ${e.toString()}'); // Add this line for debugging
+
         String errorMessage = '';
 
         if (e is FirebaseAuthException) {
