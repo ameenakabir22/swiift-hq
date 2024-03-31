@@ -64,38 +64,19 @@ class _LogInState extends State<LogIn> {
 
   void signUserIn(BuildContext context) async {
     if (formValidation()) {
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
+      // Simulate authentication (replace this with actual authentication code)
+      bool isAuthenticated = true;
+
+      if (isAuthenticated) {
+        // Navigate to home page on successful authentication
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );
-      } on FirebaseAuthException catch (e) {
-        print('Firebase Error: ${e.toString()}'); // Add this line for debugging
-
-        String errorMessage = '';
-
-        if (e is FirebaseAuthException) {
-          switch (e.code) {
-            case 'user-not-found':
-              errorMessage = 'No user found with this email.';
-              break;
-            case 'wrong-password':
-              errorMessage = 'Incorrect email or password.';
-              break;
-            default:
-              errorMessage = 'An error occurred. Please try again later.';
-              break;
-          }
-        } else {
-          errorMessage = 'An error occurred. Please try again later.';
-        }
-
+      } else {
+        // Show error message if authentication fails
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(errorMessage)),
+          SnackBar(content: Text('Authentication failed. Please try again.')),
         );
       }
     }
